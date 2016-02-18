@@ -1,0 +1,51 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "intIPON.stage.jelastic.com"},
+    "env": {"topology": {
+      "engine": "php5.4",
+      "ha": false,
+      "nodes": [
+        {
+          "count": 2,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 4,
+          "nodeType": "apache2"
+        },
+        {
+          "count": 1,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 4,
+          "nodeType": "nginx"
+        }
+      ],
+      "ssl": false
+    }},
+    "name": 1445851770607,
+    "onInstall": {"call": {"procedure": "import"}},
+    "procedures": [{
+      "id": "import",
+      "onCall": [{"unpack": [
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.cp[0].id}",
+          "sourcePath": "https://node67137-intIPON.stage.jelastic.com:7979/d6fdb2f8-662d-4da9-9e2f-c2d74f9bd7a7.tar.gz"
+        },
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.cp[1].id}",
+          "sourcePath": "https://node67169-intIPON.stage.jelastic.com:7979/d6fdb2f8-662d-4da9-9e2f-c2d74f9bd7a7.tar.gz"
+        },
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.bl[0].id}",
+          "sourcePath": "https://node67163-intIPON.stage.jelastic.com:7979/d6fdb2f8-662d-4da9-9e2f-c2d74f9bd7a7.tar.gz"
+        }
+      ]}]
+    }]
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.5"
+}

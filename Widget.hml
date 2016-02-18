@@ -1,0 +1,42 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+  <script src="//d00ce9870450abc280bb42d1f42a066e.app.dev.jelastic.com/lib/framepost.js"></script>
+  <style>body {width : 100%; height:100%;padding:0;margin:0}</style>
+</head>
+<body>
+  <div data-app="e1de1c7d-ee42-4b87-9f85-9982b4295302"
+       data-width="400"
+       data-theme="modern"
+       data-keys=""
+       data-key="app.jelastic.elastx.net"
+       data-text="Get it NOW! pleAse"
+       data-tx-empty="Type your email and click the button"
+       data-tx-invalid-email="Invalid email, please check the spelling"
+       data-tx-error="An error has occurred, please try again later"
+       data-hoster-select="1"
+       data-tx-success="Check your email"
+       class="je-app" >
+  </div>
+
+
+<script type="text/javascript">
+
+//<![CDATA[
+
+(function(d, s, id) {
+ var js, fjs = d.getElementsByTagName(s)[0];
+ if (d.getElementById(id)) return;
+ js       = d.createElement(s); 
+ js.id    = id;
+ js.async = true;
+ js.src   = "//d00ce9870450abc280bb42d1f42a066e.app.dev.jelastic.com/widgets.js";
+  // js.src = "//go.jelastic.com/widgets.js";
+ fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'jelastic-jssdk'));
+
+//]]>
+</script>
+  </body>
+</html> 

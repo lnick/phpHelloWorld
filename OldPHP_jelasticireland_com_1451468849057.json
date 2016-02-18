@@ -1,0 +1,32 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "OldPHP.jelasticireland.com"},
+    "env": {
+      "onInit": {"call": {"procedure": "import"}},
+      "topology": {
+        "engine": "php5.4",
+        "ha": false,
+        "nodes": [{
+          "count": 1,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 4,
+          "nodeType": "apache2"
+        }],
+        "ssl": false
+      }
+    },
+    "name": 1451468849057,
+    "procedures": [{
+      "id": "import",
+      "onCall": [{"unpack": [{
+        "destPath": "/",
+        "nodeId": "${nodes.cp[0].id}",
+        "sourcePath": "https://node6030-OldPHP.jelasticireland.com:7979/b0210874-3fda-497f-a55a-d3011c13793d.tar.gz"
+      }]}]
+    }]
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.3"
+}

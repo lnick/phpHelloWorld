@@ -1,0 +1,93 @@
+===== TEST bcmath module<br />== bcadd<br />6.234<br />6.2340<br /><br />== bccomp<br />-1<br />0<br />1<br /><br />== bcdiv<br />16.007<br /><br />== bcmod<br />0<br />2<br /><br />== bcmul<br />47.161<br />8<br /><br />== bcpow<br />74.08<br /><br />== bcpowmod<br />0.000<br />0<br /><br />== bcscale<br />16.007<br />16.007<br /><br />== bcsqrt<br />1.414<br /><br />== bcsub<br />-3.766<br />-3.7660<br /><br />=========================================================== <br \>===== TEST bzip2 module <br \>This is a <br \>test string.
+<br \>=========================================================== <br \>===== TEST calendar module <br \><table class='table table-bordered' style="table-layout: fixed;">
+	<tr>
+		<th colspan="7" class="text-center"> December 2015 </th>
+	</tr>
+	<tr>
+					<td class="text-center">Sun</td>
+					<td class="text-center">Mon</td>
+					<td class="text-center">Tue</td>
+					<td class="text-center">Wed</td>
+					<td class="text-center">Thu</td>
+					<td class="text-center">Fri</td>
+					<td class="text-center">Sat</td>
+			</tr>
+	<tr>
+					<td></td>
+					<td></td>
+											<td>1</td>
+															<td>2</td>
+															<td>3</td>
+															<td>4</td>
+															<td><strong>5</strong></td>
+										</tr><tr>
+												<td>6</td>
+															<td>7</td>
+															<td>8</td>
+															<td>9</td>
+															<td>10</td>
+															<td>11</td>
+															<td>12</td>
+										</tr><tr>
+												<td>13</td>
+															<td>14</td>
+															<td>15</td>
+															<td>16</td>
+															<td>17</td>
+															<td>18</td>
+															<td>19</td>
+										</tr><tr>
+												<td>20</td>
+															<td>21</td>
+															<td>22</td>
+															<td>23</td>
+															<td>24</td>
+															<td>25</td>
+															<td>26</td>
+										</tr><tr>
+												<td>27</td>
+															<td>28</td>
+															<td>29</td>
+															<td>30</td>
+															<td>31</td>
+													<td></td>
+					<td></td>
+			</tr>
+</table>
+
+<br \>=========================================================== <br \>===== TEST ctype module <br \>The string AbCd1zyZ9 consists of all letters or digits. <br \>The string foo!#$bar does not consist of all letters or digits.<br \><br \><br \>=========================================================== <br \>===== TEST curl module <br \><br \>=========================================================== <br \>===== TEST date module <br \>Saturday<br \>Saturday 5th of December 2015 02:21:38 PM<br \>July 1, 2000 is on a Saturday<br \>Sat, 05 Dec 2015 14:21:38 +0000<br \>2000-07-01T00:00:00+00:00<br \><br \>=========================================================== <br \>===== TEST dom module <br \><?xml version="1.0" encoding="utf-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="xmlns:ss=&quot;urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Styles>
+    <Style ss:ID="Default"/>
+  </Styles>
+  <Worksheet ss:Name="sheet1">
+    <Table>
+      <Row>
+        <Cell>
+          <Data ss:Type="String">col1</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">col2</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">1</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="Number">2</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">3</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="Number">4</Data>
+        </Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+</Workbook>
+

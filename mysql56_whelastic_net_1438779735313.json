@@ -1,0 +1,39 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "mysql56.whelastic.net"},
+    "env": {
+      "onInit": {"call": {"procedure": "import"}},
+      "topology": {
+        "engine": "java6",
+        "ha": false,
+        "nodes": [{
+          "count": 2,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 8,
+          "nodeType": "mysql5-6"
+        }],
+        "ssl": false
+      }
+    },
+    "name": 1438779735313,
+    "procedures": [{
+      "id": "import",
+      "onCall": [{"unpack": [
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.sqldb[0].id}",
+          "sourcePath": "https://node37038-mysql56.whelastic.net:7979/ab7b593b-1646-4d0d-bcf5-a96ae878145a.tar.gz"
+        },
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.sqldb[1].id}",
+          "sourcePath": "https://node37041-mysql56.whelastic.net:7979/ab7b593b-1646-4d0d-bcf5-a96ae878145a.tar.gz"
+        }
+      ]}]
+    }]
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.4"
+}

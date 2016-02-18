@@ -1,0 +1,51 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "endCP.jelastic.luxembourgwebservices.com"},
+    "env": {"topology": {
+      "engine": "php5.4",
+      "ha": false,
+      "nodes": [
+        {
+          "count": 2,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 4,
+          "nodeType": "apache2"
+        },
+        {
+          "count": 1,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 4,
+          "nodeType": "nginx"
+        }
+      ],
+      "ssl": false
+    }},
+    "name": 1447679331659,
+    "onInstall": {"call": {"procedure": "import"}},
+    "procedures": [{
+      "id": "import",
+      "onCall": [{"unpack": [
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.cp[0].id}",
+          "sourcePath": "https://node17773-endCP.jelastic.luxembourgwebservices.com:7979/27e39b26-7a63-4e9a-8b2b-5bd86d57bbf2.tar.gz"
+        },
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.cp[1].id}",
+          "sourcePath": "https://node17771-endCP.jelastic.luxembourgwebservices.com:7979/27e39b26-7a63-4e9a-8b2b-5bd86d57bbf2.tar.gz"
+        },
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.bl[0].id}",
+          "sourcePath": "https://node17772-endCP.jelastic.luxembourgwebservices.com:7979/27e39b26-7a63-4e9a-8b2b-5bd86d57bbf2.tar.gz"
+        }
+      ]}]
+    }]
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.5"
+}

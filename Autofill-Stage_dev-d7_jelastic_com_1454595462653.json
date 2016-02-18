@@ -1,0 +1,30 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "Autofill-Stage.dev-d7.jelastic.com"},
+    "env": {"topology": {
+      "engine": "php5.4",
+      "ha": false,
+      "nodes": [{
+        "count": 1,
+        "extip": false,
+        "fixedCloudlets": 1,
+        "flexibleCloudlets": 4,
+        "nodeType": "apache2"
+      }],
+      "ssl": false
+    }},
+    "name": 1454595462653,
+    "onInstall": {"call": {"procedure": "import"}},
+    "procedures": [{
+      "id": "import",
+      "onCall": [{"unpack": [{
+        "destPath": "/",
+        "nodeId": "${nodes.cp[0].id}",
+        "sourcePath": "https://node83649-Autofill-Stage.dev-d7.jelastic.com:7979/4b7cb8b0-4d2b-4331-8ce7-b6a11369d34f.tar.gz"
+      }]}]
+    }]
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.5"
+}

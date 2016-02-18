@@ -1,0 +1,51 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "IntIP.stage.jelastic.com"},
+    "env": {"topology": {
+      "engine": "php5.4",
+      "ha": false,
+      "nodes": [
+        {
+          "count": 2,
+          "extip": true,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 7,
+          "nodeType": "apache2"
+        },
+        {
+          "count": 1,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 4,
+          "nodeType": "nginx"
+        }
+      ],
+      "ssl": false
+    }},
+    "name": 1445851441267,
+    "onInstall": {"call": {"procedure": "import"}},
+    "procedures": [{
+      "id": "import",
+      "onCall": [{"unpack": [
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.cp[0].id}",
+          "sourcePath": "https://node67099-IntIP.stage.jelastic.com:7979/91aaa8f3-7389-4e38-b39f-ce135cba9e2d.tar.gz"
+        },
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.cp[1].id}",
+          "sourcePath": "https://node67171-IntIP.stage.jelastic.com:7979/91aaa8f3-7389-4e38-b39f-ce135cba9e2d.tar.gz"
+        },
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.bl[0].id}",
+          "sourcePath": "https://node67160-IntIP.stage.jelastic.com:7979/91aaa8f3-7389-4e38-b39f-ce135cba9e2d.tar.gz"
+        }
+      ]}]
+    }]
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.5"
+}

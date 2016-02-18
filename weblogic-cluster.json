@@ -1,0 +1,107 @@
+{
+  "jpsType": "install",
+  "application": {
+    "name": "Weblogic Cluster",
+    "homepage": "http://jelastic.com/",
+    "description": "Autoscalable and Highly Available Weblogic Cluster",
+    "env": {
+      "topology": {
+        "nodes": [
+          {
+            "nodeType": "docker",
+            "cloudlets": 16,
+            "nodeGroup": "admin",
+            "displayName": "AdminServer",
+            "docker": {
+              "registry": {
+                "user": "rsjelastic",
+                "password": "Tshsgst647fkJH"
+              },
+              "image": "rsjelastic/weblogic:latest",
+              "env": {
+                "WLSADMIN_ADMIN_LOGIN": "weblogic",
+                "WLSADMIN_ADMIN_PASSWORD": "welcome1",
+                "PORT" : "0"
+              }
+            }
+          },
+          {
+            "nodeType": "docker",
+            "cloudlets": 16,
+            "count": 1,
+            "nodeGroup": "cp",
+            "displayName": "ManagedServer",
+            "docker": {
+              "registry": {
+                "user": "rsjelastic",
+                "password": "Tshsgst647fkJH"
+              },
+              "image": "rsjelastic/weblogic:latest",
+              "env": {
+                "WLSADMIN_ADMIN_LOGIN": "weblogic",
+                "WLSADMIN_ADMIN_PASSWORD": "welcome1",
+                "PORT": "80"
+              },
+              "links": "admin:wlsadmin",
+              "cmd": "/runCmd.sh"
+            }
+          }
+        ]
+      },
+      "onBeforeRemoveNode[nodeGroup:cp]": {
+        "executeShellCommands": {
+          "nodeId": "${event.params.nodeid}",
+          "commands": [
+            "wlst.sh deleteManagedServer.py &>> /var/log/run.log"
+          ]
+        }
+      },
+      "onAfterAddNode[nodeId:${event.response.node.id}]": {
+        "call": [
+          "createManagedServer"
+        ]
+      }
+    },
+    "onInstall": {
+      "call": [
+        "createCluster",
+        "createManagedServer"
+      ]
+    },
+    "procedures": [
+      {
+        "id": "createCluster",
+        "onCall": {
+          "executeShellCommands": {
+            "user": "root",
+            "nodeGroup": "admin",
+            "commands": [
+              "export WLSADMIN_ADMIN_LOGIN=weblogic",
+              "export WLSADMIN_ADMIN_PASSWORD=welcome1",
+              "export PORT=80",
+              "echo \"127.0.0.1 wlsadmin\" >> /etc/hosts",
+              "wget -O createCluster.py http://goo.gl/tHXSwR &>> /var/log/run.log",
+              "while (true); do fuser -n tcp 7001 && { wlst.sh createCluster.py &>> /var/log/run.log; break; } || sleep 2s; done"
+            ]
+          }
+        }
+      },
+      {
+        "id": "createManagedServer",
+        "onCall": {
+          "executeShellCommands": {
+            "user": "root",
+            "nodeGroup": "cp",
+            "commands": [
+              "wget -O createManagedServer.py http://goo.gl/3NQTu2 &>> /var/log/run.log",
+              "wget -O deleteManagedServer.py http://goo.gl/44psEv &>> /var/log/run.log",
+              "wget -O bin/startManagedWebLogic.sh http://goo.gl/O4byvh &>> /var/log/run.log",
+              "wget -O /runCmd.sh http://goo.gl/V7darr &>> /var/log/run.log && chmod +x /runCmd.sh",
+              "{ /runCmd.sh &>> /var/log/run.log & }"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

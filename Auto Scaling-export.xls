@@ -1,0 +1,3914 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta name="author" content="dev.sitechco.ru" />
+    </head>
+<table  border="1">
+    <tr>
+        <td colspan="4">Name (Abbr.): Auto Scaling (as)</td>
+    </tr>
+    <tr>
+        <td colspan="4">Description: </td>
+    </tr>
+         <tr>
+        <td colspan="4">Readiness: 0 </td>
+    </tr>
+            <tr>
+        <td colspan="4">Status: Not agreed </td>
+    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Alerts</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">AUTOMATED without last step. Test name "Auto Scaling -> Alert"</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            1        </td>
+        <td>
+            Medium        </td>
+        <td>Create env-1 with T7 (8 cloudlets) + Nginx</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            2        </td>
+        <td>
+            Medium        </td>
+        <td>Open server > varaibles.conf file and enable jelastic java agent by uncomment the file:<br />
+-javaagent:/var/lib/jelastic/java/jelastic-gc-agent.jar=debug=true,period=300. <br />
+<br />
+Save.</td>
+                <td>Changes should be saved</td>
+                    </tr>
+        <tr>
+        <td>
+            3        </td>
+        <td>
+            Medium        </td>
+        <td>Restart app server</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            4        </td>
+        <td>
+            Medium        </td>
+        <td>Environment Settings - Monitoring - Load Alerts</td>
+                <td>Panel for creating</td>
+                    </tr>
+        <tr>
+        <td>
+            5        </td>
+        <td>
+            High        </td>
+        <td>Add new alert1:<br />
+{name, Tomcat, parametr (Cloudlets), >5%, 15 minutes} <br />
+Click on Add.</td>
+                <td>New alert should be created</td>
+                    </tr>
+        <tr>
+        <td>
+            6        </td>
+        <td>
+            High        </td>
+        <td>Add new alert2:<br />
+{name, Tomcat, parametr (Memory), <15%, 15 minutes}<br />
+Click on Add.</td>
+                <td>New alert should be created</td>
+                    </tr>
+        <tr>
+        <td>
+            7        </td>
+        <td>
+            High        </td>
+        <td>Wait near 15 minutes and check your email</td>
+                <td>Should be two letters about two alerts (1,2) (link for "documentation" should be http://docs.jelastic.com/environment-triggers)</td>
+                    </tr>
+        <tr>
+        <td>
+            8        </td>
+        <td>
+            Medium        </td>
+        <td>Load your app server by using Loader.war (or LoadUI):<br />
+(https://dl.dropboxusercontent.com/s/ntas7txca3dsqzu<br />
+/Loader.war?dl=1&token_hash=AAEkEi2tNFnJ_ed7sp1-i4N9s9zsO6BuMU-nYOnezAkBcA)<br />
+with appropriate params:<br />
+(/loader?mem=200&duration=300).</td>
+                <td>The process should be started</td>
+                    </tr>
+        <tr>
+        <td>
+            9        </td>
+        <td>
+            High        </td>
+        <td>Wait near 5 minutes and check your email</td>
+                <td>Should be only letter with alert1</td>
+                    </tr>
+        <tr>
+        <td>
+            10        </td>
+        <td>
+            Medium        </td>
+        <td>Select alert1 - Edit - Is (parameter) - change percent of trigers activation to 1</td>
+                <td>Changes should be saved</td>
+                    </tr>
+        <tr>
+        <td>
+            11        </td>
+        <td>
+            High        </td>
+        <td>Wait near 5 minutes and check your email</td>
+                <td>Should be only letter with alert1 with new searching settings (link for "documentation" should be http://docs.jelastic.com/environment-triggers)</td>
+                    </tr>
+        <tr>
+        <td>
+            12        </td>
+        <td>
+            Medium        </td>
+        <td>Restart Tomcat and Nginx</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            13        </td>
+        <td>
+            High        </td>
+        <td>Add new alert3 (use special simbols "!@#$%^&*()<>?| and spaces" in name:<br />
+{name, Tomcat, parametr (Memory), <10%, 5 minutes}<br />
+Click on Add.</td>
+                <td>New alert should be created</td>
+                    </tr>
+        <tr>
+        <td>
+            14        </td>
+        <td>
+            Medium        </td>
+        <td>Add new alert4:<br />
+{name, Nginx, parametr (Inodes), <99%, 5 minutes}<br />
+Click on Add.</td>
+                <td>New alert should be created</td>
+                    </tr>
+        <tr>
+        <td>
+            15        </td>
+        <td>
+            Medium        </td>
+        <td>Wait near 10 minutes and check your email</td>
+                <td>Should be two letters with alert3,4 (link for "documentation" should be http://docs.jelastic.com/environment-triggers)</td>
+                    </tr>
+        <tr>
+        <td>
+            16        </td>
+        <td>
+            High        </td>
+        <td>Add new alert5:<br />
+{name, Nginx, parametr (Storage), >5%, 5 minutes}<br />
+Click on Add.</td>
+                <td>New alert should be created</td>
+                    </tr>
+        <tr>
+        <td>
+            17        </td>
+        <td>
+            Medium        </td>
+        <td>Select alert5 - Edit - change node type to Tomcat</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            18        </td>
+        <td>
+            High        </td>
+        <td>Wait near 10 minutes and check your email</td>
+                <td>The last email should contain info about Tomcat node</td>
+                    </tr>
+        <tr>
+        <td>
+            19        </td>
+        <td>
+            Medium        </td>
+        <td>Remove alert1 and alert2 and alert5</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            20        </td>
+        <td>
+            Medium        </td>
+        <td>Disable alert3 and alert4</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            21        </td>
+        <td>
+            High        </td>
+        <td>Wait near 10 minutes</td>
+                <td>There are no letters about any alerts</td>
+                    </tr>
+        <tr>
+        <td>
+            22        </td>
+        <td>
+            Medium        </td>
+        <td>Add new alert6:<br />
+{name, Nginx, parametr (Cloudlets), <5%, 5 minutes}<br />
+Click on Add.</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            23        </td>
+        <td>
+            Medium        </td>
+        <td>Remove Nginx node from env</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            24        </td>
+        <td>
+            High        </td>
+        <td>Wait near 5 minutes and check your email</td>
+                <td>There are no letters about Nginx alerts</td>
+                    </tr>
+        <tr>
+        <td>
+            25        </td>
+        <td>
+            High        </td>
+        <td>Add alert via API<br />
+http://app.dev.jelastic.com/JElastic/env/trigger/rest/addtrigger?appid=[appid]&session=[session]&data={"name":"test2","nodeType":"[nodetype]","period":"1","condition":{"type":"GREATER","value":"1","resourceType":"CLOUDLETS"},"actions":[{"type":"NOTIFY"}]}</td>
+                <td>The alert “Test2” should be added.</td>
+                    </tr>
+        <tr>
+        <td>
+            26        </td>
+        <td>
+            Medium        </td>
+        <td>Wait for a 1 minute and check your email</td>
+                <td>There are letters about Tomcat alerts</td>
+                    </tr>
+        <tr>
+        <td>
+            27        </td>
+        <td>
+            Medium        </td>
+        <td>Remove all alerts</td>
+                <td>Removed</td>
+                    </tr>
+        <tr>
+        <td>
+            28        </td>
+        <td>
+            High        </td>
+        <td>Help messages (bug from v2.5):<br />
+1. Set your browser width to 1024px<br />
+2. Open the 'Jelastic Dashboard' -> 'Settings' for env-1 -> 'Automatical Horizontal Scaling' tab<br />
+3. Maximize browser window</td>
+                <td>1. Browser should be set to 1024px<br />
+2. 'Automatical Horizontal Scaling' tab for env-1 should be opened with correct help message in the top<br />
+3. Browser window should be maximized, message window should be displayed w/o changes. Bug was: http://jira.jelastic.com/secure/attachment/48805/761c3-clip-99kb.png</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Horizontal Scaling (memory)</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">AUTOMATED. Test name "Horizontal Scaling (memory)"</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            29        </td>
+        <td>
+            Medium        </td>
+        <td>Create env with T7 (8 cloudlets)  and deploy "Hello World", "Loader" app</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            30        </td>
+        <td>
+            Medium        </td>
+        <td>Open server > varaibles.conf file and enable jelastic java agent by uncomment to file:<br />
+-javaagent:/var/lib/jelastic/java/jelastic-gc-agent.jar=debug=true,period=300. <br />
+<br />
+Save.</td>
+                <td>Changes should be saved</td>
+                    </tr>
+        <tr>
+        <td>
+            31        </td>
+        <td>
+            Medium        </td>
+        <td>Restart app server</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            32        </td>
+        <td>
+            Medium        </td>
+        <td>Environment Settings - Monitoring - Auto Horizontal Scaling</td>
+                <td>Panel for scaling is shown<br />
+Empty grid is shown for just created environment. The chart is shown with time.</td>
+                    </tr>
+        <tr>
+        <td>
+            33        </td>
+        <td>
+            Medium        </td>
+        <td>Click on "Memory" button, set toggleSwitch "Enable" to "On", toggleSwitch "Send Email Notification" to "On"</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            34        </td>
+        <td>
+            Medium        </td>
+        <td>Add Nodes region:<br />
+- For at least: 1<br />
+- Scale up to: 5<br />
+- nodes by 1 count<br />
+<br />
+Remove Nodes:<br />
+- For at least: 20<br />
+- Scale down to: 1<br />
+- nodes by 1 count</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            35        </td>
+        <td>
+            Medium        </td>
+        <td>Set:<br />
+- top limit to 70%<br />
+- bottom limit to 15%</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            36        </td>
+        <td>
+            High        </td>
+        <td>Click on "Settings"</td>
+                <td>1. The  “Autorefresh” setting should be checked by default.<br />
+2. The default value of “Duration” should be chosen by following algorithm: <br />
+if the environment is created less than 6 hours - 1 hour, less than 12 hours - 6 hours, less than 1 day - 12 hours, less than 1 week - 1 day, more than 1 week - 1 week.</td>
+                    </tr>
+        <tr>
+        <td>
+            37        </td>
+        <td>
+            Medium        </td>
+        <td>Set "1 hour"</td>
+                <td>The "1 hour" period is chosen.<br />
+<br />
+When the environment was created less than 6 hour it is possible to chose 1 hour with saving of this period time, less than 12 hours - 6 hours, less than 1 day - 12 hours, less than 1 week - 1 day, more than 1 week - 1 week.</td>
+                    </tr>
+        <tr>
+        <td>
+            38        </td>
+        <td>
+            Medium        </td>
+        <td>click on "Apply"</td>
+                <td>All parameters for auto scaling (by memory) should be applied</td>
+                    </tr>
+        <tr>
+        <td>
+            39        </td>
+        <td>
+            Medium        </td>
+        <td>Load your app server by using Loader.war:<br />
+(https://dl.dropboxusercontent.com/s/ntas7txca3dsqzu/Loader.war?dl=1&token_hash=AAEkEi2tNFnJ_ed7sp1-i4N9s9zsO6BuMU-nYOnezAkBcA)<br />
+with appropriate params:<br />
+(/loader?mem=750&duration=600).</td>
+                <td>The process should be started</td>
+                    </tr>
+        <tr>
+        <td>
+            40        </td>
+        <td>
+            High        </td>
+        <td>Check your env after 5-10m</td>
+                <td>Shoud be one more app node (and balancer)</td>
+                    </tr>
+        <tr>
+        <td>
+            41        </td>
+        <td>
+            High        </td>
+        <td>Check your email</td>
+                <td>noShould be letter about adding one morede</td>
+                    </tr>
+        <tr>
+        <td>
+            42        </td>
+        <td>
+            High        </td>
+        <td>Change language for dashboard. Check your env after 5-10m</td>
+                <td>Shoud be one app node (and balancer)</td>
+                    </tr>
+        <tr>
+        <td>
+            43        </td>
+        <td>
+            High        </td>
+        <td>Check your email</td>
+                <td>Should be letter about removing one app node (as we are not loading the server any more). Language should be changed.</td>
+                    </tr>
+        <tr>
+        <td>
+            44        </td>
+        <td>
+            Medium        </td>
+        <td>Click on "Memory" button, set toggleSwitch "Enable" to "On", toggleSwitch "Send Email Notificatio to "Off" and repeat steps<br />
+<br />
+click on "Apply"</td>
+                <td>All parameters for auto scaling (by memory) should be applied</td>
+                    </tr>
+        <tr>
+        <td>
+            45        </td>
+        <td>
+            Medium        </td>
+        <td>Repeat loading and checking steps</td>
+                <td>Should be adding and removing process without emails notifications</td>
+                    </tr>
+        <tr>
+        <td>
+            46        </td>
+        <td>
+            Medium        </td>
+        <td>Open three browser pages for loading your env with appropriate params:<br />
+1) /loader?mem=750&duration=600<br />
+2) /loader?mem=1500&duration=600<br />
+3) /loader?mem=2300&duration=600</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            47        </td>
+        <td>
+            Medium        </td>
+        <td>Start to load your env from the firs page.<br />
+When load should be stopped run the second page and then third</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            48        </td>
+        <td>
+            High        </td>
+        <td>Check your env</td>
+                <td>Should be env with 3 nodes</td>
+                    </tr>
+        <tr>
+        <td>
+            49        </td>
+        <td>
+            High        </td>
+        <td>Check your email</td>
+                <td>Should be two emails about adding one more node</td>
+                    </tr>
+        <tr>
+        <td>
+            50        </td>
+        <td>
+            High        </td>
+        <td>Wait 10-20m and check your env and email</td>
+                <td>Should be one node and two email about node removing (as we are not loading server any more)</td>
+                    </tr>
+        <tr>
+        <td>
+            51        </td>
+        <td>
+            Medium        </td>
+        <td>Delete your env</td>
+                <td>Ok</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Horizontal Scaling (cpu)</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">AUTOMATED. Test name "Horizontal Scaling (cpu)"</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            52        </td>
+        <td>
+            Medium        </td>
+        <td>Install LoadUI application</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            53        </td>
+        <td>
+            Medium        </td>
+        <td>Create env with Apache (4 cloudlets) and deploy "Hello World" app</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            54        </td>
+        <td>
+            Medium        </td>
+        <td>Environment Settings - Monitoring - Auto Horizontal Scaling</td>
+                <td>Panel for scaling</td>
+                    </tr>
+        <tr>
+        <td>
+            55        </td>
+        <td>
+            Medium        </td>
+        <td>Click on "CPU" button, set toggleSwitch "Enable" to "On", toggleSwitch "Send Email Notification" to "On"</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            56        </td>
+        <td>
+            Medium        </td>
+        <td>Add Nodes region:<br />
+- For at least: 5<br />
+- Scale up to: 5<br />
+- nodes by 1 count<br />
+<br />
+Remove Nodes:<br />
+- For at least: 1<br />
+- Scale down to: 1<br />
+- nodes by 1 count</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            57        </td>
+        <td>
+            Medium        </td>
+        <td>Set:<br />
+- top limit to 40%<br />
+- bottom limit to 15%</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            58        </td>
+        <td>
+            Medium        </td>
+        <td>Click on "Settings"</td>
+                <td>1. The  “Autorefresh” setting should be checked by default.<br />
+2. The default value of “Duration” should be chosen by following algorithm: <br />
+if the application is created less than 6 hours - 1 hour, less than 12 hours - 6 hours, less than 1 day - 12 hours, or - 1 day.</td>
+                    </tr>
+        <tr>
+        <td>
+            59        </td>
+        <td>
+            Medium        </td>
+        <td>Set "1 hour"</td>
+                <td>The "1 hour" period is chosen.<br />
+<br />
+When the environment was created less than 6 hour it is possible to chose 1 hour with saving of this period time, less than 12 hours - 6 hours, less than 1 day - 12 hours, less than 1 week - 1 day, more than 1 week - 1 week.</td>
+                    </tr>
+        <tr>
+        <td>
+            60        </td>
+        <td>
+            Medium        </td>
+        <td>click on "Apply"</td>
+                <td>All parameters for auto scaling (by cpu) should be applied</td>
+                    </tr>
+        <tr>
+        <td>
+            61        </td>
+        <td>
+            Medium        </td>
+        <td>Go to LoadUI add new Generator (Fixed Rate) and Runners (Web Page Runner). Сonnect them.</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            62        </td>
+        <td>
+            Medium        </td>
+        <td>Set web page address (open in browser your env and copy all URL) to Runners.<br />
+Click on "Open in browser" for cheking</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            63        </td>
+        <td>
+            Medium        </td>
+        <td>Double_Click on "Rate" (Generator) and set 200 counts od requests per seconds</td>
+                <td>Parameter applied</td>
+                    </tr>
+        <tr>
+        <td>
+            64        </td>
+        <td>
+            Medium        </td>
+        <td>Finde button "Run" for this sistem and start to load your env</td>
+                <td>Load process should be started</td>
+                    </tr>
+        <tr>
+        <td>
+            65        </td>
+        <td>
+            High        </td>
+        <td>Check your env after 5-10m</td>
+                <td>Shoud be one more app node (and balancer)</td>
+                    </tr>
+        <tr>
+        <td>
+            66        </td>
+        <td>
+            High        </td>
+        <td>Check your email</td>
+                <td>Should be letter about adding one more node</td>
+                    </tr>
+        <tr>
+        <td>
+            67        </td>
+        <td>
+            Medium        </td>
+        <td>Double_Click on "Rate" (Generator) and set 700 counts od requests per seconds</td>
+                <td>Parameter applied</td>
+                    </tr>
+        <tr>
+        <td>
+            68        </td>
+        <td>
+            High        </td>
+        <td>Check your env after 5-10m</td>
+                <td>Shoud be one more app node (and balancer)</td>
+                    </tr>
+        <tr>
+        <td>
+            69        </td>
+        <td>
+            High        </td>
+        <td>Check your email</td>
+                <td>Should be letter about adding one more node</td>
+                    </tr>
+        <tr>
+        <td>
+            70        </td>
+        <td>
+            High        </td>
+        <td>Double_Click on "Rate" (Generator) and set 1500 counts od requests per seconds</td>
+                <td>The same result as for two previous</td>
+                    </tr>
+        <tr>
+        <td>
+            71        </td>
+        <td>
+            High        </td>
+        <td>Wait 10-20m and check your env and email</td>
+                <td>Should be one node and two email about node removing (as we are not loading server any more)</td>
+                    </tr>
+        <tr>
+        <td>
+            72        </td>
+        <td>
+            Medium        </td>
+        <td>Delete your env</td>
+                <td>Ok</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Critical settings</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">AUTOMATED. Test name "Critical settings"</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            73        </td>
+        <td>
+            Medium        </td>
+        <td>Create env with Apache (+Ext IP) + Maria (+Ext IP) and deploy "Hello World" app</td>
+                <td>New environment should be created</td>
+                    </tr>
+        <tr>
+        <td>
+            74        </td>
+        <td>
+            Medium        </td>
+        <td>Environment Settings - Monitoring - Auto Horizontal Scaling</td>
+                <td>Panel for scaling is shown</td>
+                    </tr>
+        <tr>
+        <td>
+            75        </td>
+        <td>
+            Medium        </td>
+        <td>Click on "CPU" button, set toggleSwitch "Enable" to "On", toggleSwitch "Send Email Notification" to "On"</td>
+                <td>Parameters applied</td>
+                    </tr>
+        <tr>
+        <td>
+            76        </td>
+        <td>
+            Medium        </td>
+        <td>Add Nodes region:<br />
+- For at least: 5<br />
+- Scale up to: 4<br />
+- nodes by 3 count<br />
+<br />
+Remove Nodes:<br />
+- For at least: 5<br />
+- Scale down to: 3<br />
+- nodes by 3 count</td>
+                <td>Parameters applied</td>
+                    </tr>
+        <tr>
+        <td>
+            77        </td>
+        <td>
+            High        </td>
+        <td>Set:<br />
+- top limit to 40%<br />
+- bottom limit to 15%<br />
+<br />
+click on "Apply"</td>
+                <td>All parameters for auto scaling (by memory) should be applied</td>
+                    </tr>
+        <tr>
+        <td>
+            78        </td>
+        <td>
+            High        </td>
+        <td>Load your env using LoadUI for adding firs 3 node</td>
+                <td>Nodes should be added. All added nodes shoul have Ext IP</td>
+                    </tr>
+        <tr>
+        <td>
+            79        </td>
+        <td>
+            High        </td>
+        <td>Load more your env for adding next 3 node</td>
+                <td>Shoud be added only 1 node. All added nodes shoul have Ext IP</td>
+                    </tr>
+        <tr>
+        <td>
+            80        </td>
+        <td>
+            High        </td>
+        <td>Wait near 10-20 minutes</td>
+                <td>Should be removed only 1 node. Application node and DB node should have Ext IP.</td>
+                    </tr>
+        <tr>
+        <td>
+            81        </td>
+        <td>
+            Medium        </td>
+        <td>Delete your env</td>
+                <td>Ok</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Competitive for triggers</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;"></td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            82        </td>
+        <td>
+            Medium        </td>
+        <td>Create env with Tomcat (1-4 cloudlets) and balancer node, deploy "Hello World" and "Loader.war"</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            83        </td>
+        <td>
+            Medium        </td>
+        <td>Open server > varaibles.conf file and enable jelastic java agent by uncomment to file:<br />
+-javaagent:/var/lib/jelastic/java/jelastic-gc-agent.jar=debug=true,period=300. <br />
+<br />
+Save.</td>
+                <td>Changes should be saved</td>
+                    </tr>
+        <tr>
+        <td>
+            84        </td>
+        <td>
+            Medium        </td>
+        <td>Restart app server</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            85        </td>
+        <td>
+            Medium        </td>
+        <td>Environment Settings - Trigers - Auto Horizontal Scaling</td>
+                <td>Panel for scaling is shown</td>
+                    </tr>
+        <tr>
+        <td>
+            86        </td>
+        <td>
+            High        </td>
+        <td>Click on "Memory" button, set toggleSwitch "Enable" to "On", toggleSwitch "Send Email Notification" to "On"<br />
+<br />
+Add Nodes region:<br />
+- For at least: 5<br />
+- Scale up to: 3<br />
+- nodes by 1 count<br />
+<br />
+Remove Nodes:<br />
+- For at least: 5<br />
+- Scale down to: 1<br />
+- nodes by 1 count</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            87        </td>
+        <td>
+            High        </td>
+        <td>Click on "CPU" button, set toggleSwitch "Enable" to "On", toggleSwitch "Send Email Notification" to "On"<br />
+<br />
+Add Nodes region:<br />
+- For at least: 5<br />
+- Scale to: 3<br />
+- nodes by 2 count<br />
+<br />
+Remove Nodes:<br />
+- For at least: 5<br />
+- Scale down to: 1<br />
+- nodes by 1 count</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            88        </td>
+        <td>
+            High        </td>
+        <td>Load your CPU using LoadUI (set 150 - 250 requests per s.) and load your memory using Loader.war<br />
+(/loader?mem=200&duration=600)</td>
+                <td>Loading processes should be started</td>
+                    </tr>
+        <tr>
+        <td>
+            89        </td>
+        <td>
+            High        </td>
+        <td>Wait near 5-10 minutes</td>
+                <td>Should be activated only one triggers</td>
+                    </tr>
+        <tr>
+        <td>
+            90        </td>
+        <td>
+            Medium        </td>
+        <td>Change the setting for adding nodes for CPU via API<br />
+<br />
+http://app.ams.jelastic.com/JElastic/env/trigger/rest/edittrigger?appid=cdcb7aad381581708a645592ab21e8ce&session=17x3d9691a438f59fc395e7adfdece8b1a3&id=25&data={"isEnabled":true,"name":"hs-add-Autoscaling","nodeType":"tomcat7","period":1,"condition":{"type":"GREATER","value":15,"resourceType":"CPU"},"actions":[{"type":"ADD_NODE","customData":{"limit":5,"count":1,"notify":true}}],"id":25}</td>
+                <td>The result should be success<br />
+<br />
+{"result":0,"object":{"lastExecutedOn":"2015-02-06 08:23:53","createdOn":"2015-02-05 12:47:57","id":25,"condition":{"value":15,"type":"GREATER","resourceType":"MEM"},"name":"hs-add-Autoscaling","state":"IDLE","updatedOn":"2015-02-06 10:09:35","isDeleted":false,"period":1,"nodeType":"tomcat7","actions":[{"customData":{"limit":5,"count":1,"notify":true},"type":"ADD_NODE"}],"isEnabled":true}}</td>
+                    </tr>
+        <tr>
+        <td>
+            91        </td>
+        <td>
+            Medium        </td>
+        <td>Change the setting for removing nodes for CPU via API<br />
+<br />
+http://app.ams.jelastic.com/JElastic/env/trigger/rest/edittrigger?appid=cdcb7aad381581708a645592ab21e8ce&session=17x3d9691a438f59fc395e7adfdece8b1a3&id=26&data={"isEnabled":true,"name":"hs-remove-Autoscaling","nodeType":"tomcat7","period":5,"condition":{"type":"LESS","value":5,"resourceType":"CPU"},"actions":[{"type":"REMOVE_NODE","customData":{"limit":1,"count":1,"notify":true}}],"id":26}</td>
+                <td>The result should be success<br />
+<br />
+{"result":0,"object":{"lastExecutedOn":"2015-02-06 07:15:49","createdOn":"2015-02-05 12:47:57","id":26,"condition":{"value":5,"type":"LESS","resourceType":"MEM"},"name":"hs-remove-Autoscaling","state":"IDLE","updatedOn":"2015-02-06 10:17:27","isDeleted":false,"period":5,"nodeType":"tomcat7","actions":[{"customData":{"limit":1,"count":1,"notify":true},"type":"REMOVE_NODE"}],"isEnabled":true}}</td>
+                    </tr>
+        <tr>
+        <td>
+            92        </td>
+        <td>
+            Medium        </td>
+        <td>Repeat 90-91 steps for CPU</td>
+                <td>The results should be the same</td>
+                    </tr>
+        <tr>
+        <td>
+            93        </td>
+        <td>
+            Medium        </td>
+        <td>Return to dashboard and re-open the settings of environment.</td>
+                <td>The "settings" tab should be shoun</td>
+                    </tr>
+        <tr>
+        <td>
+            94        </td>
+        <td>
+            Medium        </td>
+        <td>Choose the "Auto Horizontal Scaling" and check the values of CPU and MEMORY that was set by API</td>
+                <td>The values should be the same that it was indicated in API</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Logs</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;"></td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            95        </td>
+        <td>
+            Medium        </td>
+        <td>Environment Settings - Monitoring - Logs</td>
+                <td>Panel with logs about scaling processes</td>
+                    </tr>
+        <tr>
+        <td>
+            96        </td>
+        <td>
+            Medium        </td>
+        <td>Set "Type" to Load Alerts, select needed time period</td>
+                <td>Should be all alerts which have been worked</td>
+                    </tr>
+        <tr>
+        <td>
+            97        </td>
+        <td>
+            Medium        </td>
+        <td>Set "Type" to Horizontal Scaling, select needed time period</td>
+                <td>Should be all scaling operations which have been worked</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Default settings</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;"></td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            98        </td>
+        <td>
+            Medium        </td>
+        <td>Limit for node adding</td>
+                <td>80%</td>
+                    </tr>
+        <tr>
+        <td>
+            99        </td>
+        <td>
+            Medium        </td>
+        <td>Limit for node removing</td>
+                <td>40%</td>
+                    </tr>
+        <tr>
+        <td>
+            100        </td>
+        <td>
+            Medium        </td>
+        <td>Period for node adding</td>
+                <td>5m</td>
+                    </tr>
+        <tr>
+        <td>
+            101        </td>
+        <td>
+            Medium        </td>
+        <td>Period for node removing</td>
+                <td>10m</td>
+                    </tr>
+        <tr>
+        <td>
+            102        </td>
+        <td>
+            Medium        </td>
+        <td>Add to</td>
+                <td>1 nodes</td>
+                    </tr>
+        <tr>
+        <td>
+            103        </td>
+        <td>
+            Medium        </td>
+        <td>Remove to</td>
+                <td>1 nodes</td>
+                    </tr>
+        <tr>
+        <td>
+            104        </td>
+        <td>
+            Medium        </td>
+        <td>Send notification On/Off</td>
+                <td>On</td>
+                    </tr>
+        <tr>
+        <td>
+            105        </td>
+        <td>
+            Medium        </td>
+        <td>Default period for charts</td>
+                <td>1 day</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Undo button : back to default value</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-20132</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            106        </td>
+        <td>
+            Medium        </td>
+        <td>1) create env with Apache <br />
+2) go to Settings->Monitoring->Auto Horizontal Scaling settings <br />
+3) CPU tub->turn ON <br />
+4) set "Scale up to:" 5 nodes and click on Apply <br />
+5) set "Scale up to:" 7 nodes and click on "Undo changes"</td>
+                <td>setting "Scale up to:" should be 5</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Covered</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;"></td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            107        </td>
+        <td>
+            Medium        </td>
+        <td>Load Alerts : Selection_Change for "Node type" ComboBox is incorrect:<br />
+<br />
+1) create env with all nodes type <br />
+2) Auto Horizontal Scaling <br />
+3) Load alerts <br />
+4) click on "Node Type" ComboBox <br />
+5) try to select each of items</td>
+                <td>you can select each of items</td>
+                    </tr>
+        <tr>
+        <td>
+            108        </td>
+        <td>
+            Medium        </td>
+        <td>Alerts : Title for VPS group is absent<br />
+<br />
+1) create env with all nodes type <br />
+2) Auto Horizontal Scaling <br />
+3) Load alerts <br />
+4) click on "Node Type" ComboBox</td>
+                <td>should be present all titles for all groups of nodes</td>
+                    </tr>
+        <tr>
+        <td>
+            109        </td>
+        <td>
+            Medium        </td>
+        <td>Add/Remove nodes tabs : change default values Scale up/Scale down to value from quotas<br />
+<br />
+1) create env with one Apache node <br />
+2) JCA->Users->your user->Quotas->maxsamenodescount->set to 2 <br />
+3) refresh dashboard <br />
+4) Auto horizontal scaling tab</td>
+                <td>need to bind the value from quota "maxsamenodescount" and TextBox "Scale up"</td>
+                    </tr>
+        <tr>
+        <td>
+            110        </td>
+        <td>
+            Medium        </td>
+        <td>incorrect logic for adding\removing actions<br />
+<br />
+Case1: <br />
+1. Create env with 5xApachePHP nodes <br />
+2. Open Settings -> Auto Horizontal Scaling -> Turned - On <br />
+3. Run script in the ~3 tabs: time tmp=0; while [ $tmp -lt 10000 ]; do curl -v http://{your_env}/index.php 2>/dev/null | grep -E '(SERVER|REMOTE)_ADDR'; tmp=$(($tmp+1)); done (Or load env using other method) <br />
+4. Set settings for "Add nodes": <br />
+- For at least: 1min <br />
+- Scale up to: 3 <br />
+- nodes by 1 <br />
+5. On graphics select: <br />
+- Add node: 1% <br />
+- Remove nodes: 0% <br />
+6. Save <br />
+7. Wait 1 min <br />
+<br />
+Case 2: <br />
+1. Create env with 2xApachePHP nodes <br />
+2. Open Settings -> Auto Horizontal Scaling -> Turned - On <br />
+3. Set settings for "Remove node": <br />
+- For at least: 1min <br />
+- Scale down to: 4 <br />
+- nodes by 1 <br />
+4. On graphics select: <br />
+- Add node: 0% <br />
+- Remove nodes: 40% <br />
+5. Save <br />
+6. Wait 1 min</td>
+                <td>Case 1: <br />
+removing 2x tomcat7 nodes <br />
+<br />
+Case 2: <br />
+adding 2x tomcat7 nodes</td>
+                    </tr>
+        <tr>
+        <td>
+            111        </td>
+        <td>
+            Medium        </td>
+        <td>removing node: java.lang.NullPointerException<br />
+<br />
+1. Create Tomcat with 3x nodes +HA <br />
+2. Open scaling for "Memory" <br />
+3. Set settings: <br />
+- For at least: 5 min <br />
+- Scale down to: 2 <br />
+- Nodes by: 1 <br />
+4. Apply <br />
+5. Wait ~1min</td>
+                <td>no any of errors</td>
+                    </tr>
+        <tr>
+        <td>
+            112        </td>
+        <td>
+            Medium        </td>
+        <td>creating trigger for inactive action: "condition.value: must be between 1 and 99"<br />
+<br />
+1. Create any env <br />
+2. Press "Settings" -> "Auto horizontal scaling" -> "Turned" - Enable <br />
+3. Deactivate one of the sections (Set parameter for "Add node" as - 100% or for "Remove node" as 0%) <br />
+4. Press "Apply"</td>
+                <td>On server should send settings only for active section</td>
+                    </tr>
+        <tr>
+        <td>
+            113        </td>
+        <td>
+            Medium        </td>
+        <td>create alerts with blank name (space in name): "name: may not be empty"<br />
+<br />
+1. Create any env <br />
+2. Open "Settings" -> Load Alerts -> Add <br />
+3. Try create alert with space in name</td>
+                <td>we can't create alert with the blank name</td>
+                    </tr>
+        <tr>
+        <td>
+            114        </td>
+        <td>
+            Medium        </td>
+        <td>Jelastic SSL: jelastic SSL is disable after removing node<br />
+<br />
+1. Create env with 2x ApachePHP + Jelastic SSL <br />
+2. Open Settings for env -> 'Auto Horizontal Scaling' -> Turn scaling for CPU <br />
+3. Set settings: <br />
+- Add node: 100% <br />
+- Remove node: 40% <br />
+- For ar least: 1min <br />
+- Scale down to: 1, nodes by: 1 <br />
+4. Press 'Apply' <br />
+5. Wait on removing node <br />
+6. Check Jelastic SSL</td>
+                <td>Jelastic SSL is enabled</td>
+                    </tr>
+        <tr>
+        <td>
+            115        </td>
+        <td>
+            Medium        </td>
+        <td>Alerts : Need to add icon for each node type in ComboBox<br />
+<br />
+1) create any of env <br />
+2) navigate to Auto horizontal scaling tab <br />
+3) load alerts <br />
+4) open ComboBox with nodes</td>
+                <td>each item should consist of icon and text (in horizontal StackPanel)</td>
+                    </tr>
+        <tr>
+        <td>
+            116        </td>
+        <td>
+            Medium        </td>
+        <td>Auto Horizontal Scaling: set values for "scale": Invalid action limits<br />
+<br />
+1. Create env with Apache <br />
+2. Open "Settings" -> Auto Horizontal Scaling -> Turned = on <br />
+3. Set settings <br />
+ For "Add Nodes": <br />
+ - Scale up to 3 <br />
+ For "Remove Nodes": <br />
+ - Scale down to 2 <br />
+4. Apply <br />
+5. Set settings <br />
+ For "Add Nodes": <br />
+ - Scale up to 2 <br />
+ For "Remove Nodes": <br />
+ - Scale down to 1</td>
+                <td>changing settings w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            117        </td>
+        <td>
+            Medium        </td>
+        <td>Full screen: Auto Horizontal Scaling: incorrect displaying sections for scaling and dashboard<br />
+<br />
+1. Open dashboard <br />
+2. Create env with CP node (eg env with Tomcat) <br />
+3. Press on "Settings" for env <br />
+4. Enable full screen mode <br />
+5. Select section "Auto Horizontal Scaling" <br />
+6. Disable full screen mode</td>
+                <td>opening menu for Auto Scaling w/o problems</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Load Alerts: disable section: alerts for inactive node should change status on "disabled"</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-19954</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            118        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with any app server<br />
+2. Open "Settings" -> Load Alerts -> Add <br />
+3. Create alert for your node<br />
+4. Press "Change topology" -> Remove app server and add any balancer or other node<br />
+5. 2. Open "Settings" -> Load Loads</td>
+                <td>alerts for inactive node should change status on "disabled"</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Load Alerts: Collaboration</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;"></td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            119        </td>
+        <td>
+            Medium        </td>
+        <td>Account1</td>
+                <td></td>
+                    </tr>
+        <tr>
+        <td>
+            120        </td>
+        <td>
+            Medium        </td>
+        <td>Create env with any node(e.g. nginx)</td>
+                <td>Env. should be created.</td>
+                    </tr>
+        <tr>
+        <td>
+            121        </td>
+        <td>
+            Medium        </td>
+        <td>Open environment Settings -> Account Management.</td>
+                <td>OK</td>
+                    </tr>
+        <tr>
+        <td>
+            122        </td>
+        <td>
+            Medium        </td>
+        <td>Add two accounts: first(account2) with "Change topology" option and second(account3) without "Change topology" option.</td>
+                <td>Notifications with "Invitation has been successfully sent to {email} user" should appears.</td>
+                    </tr>
+        <tr>
+        <td>
+            123        </td>
+        <td>
+            Medium        </td>
+        <td>Check account emails for invitation.</td>
+                <td>Invitation should be received.</td>
+                    </tr>
+        <tr>
+        <td>
+            124        </td>
+        <td>
+            Medium        </td>
+        <td>Confirm invitations on both account emails.</td>
+                <td>OK</td>
+                    </tr>
+        <tr>
+        <td>
+            125        </td>
+        <td>
+            Medium        </td>
+        <td>Open account1 Settings->Account Manager.</td>
+                <td>Account2 and account3 should be presented in the invite list.</td>
+                    </tr>
+        <tr>
+        <td>
+            126        </td>
+        <td>
+            Medium        </td>
+        <td>Add created env to Shared Environments for both accounts: account2 with Change topology option and account3 without it.</td>
+                <td>Environment should be successfully added to Shared Environments list for both accounts.</td>
+                    </tr>
+        <tr>
+        <td>
+            127        </td>
+        <td>
+            Medium        </td>
+        <td>Open env Settings -> Monitoring -> Load Alerts</td>
+                <td>OK</td>
+                    </tr>
+        <tr>
+        <td>
+            128        </td>
+        <td>
+            Medium        </td>
+        <td>Add any alert which should be executed (e.g."alert1" <99 % Storage for at least 5 min.)</td>
+                <td>Alert should be added with "enable" state.</td>
+                    </tr>
+        <tr>
+        <td>
+            129        </td>
+        <td>
+            Medium        </td>
+        <td>Wait up to 5 min and check email for the alert notification.</td>
+                <td>Notification should be received.</td>
+                    </tr>
+        <tr>
+        <td>
+            130        </td>
+        <td>
+            Medium        </td>
+        <td>Account2</td>
+                <td></td>
+                    </tr>
+        <tr>
+        <td>
+            131        </td>
+        <td>
+            Medium        </td>
+        <td>Open dashboard.</td>
+                <td>Shared env should be presented.</td>
+                    </tr>
+        <tr>
+        <td>
+            132        </td>
+        <td>
+            Medium        </td>
+        <td>Open env Settings -> Monitoring -> Load Alerts</td>
+                <td>Load Alerts panel is shown. Alert1 should be presented and editable.</td>
+                    </tr>
+        <tr>
+        <td>
+            133        </td>
+        <td>
+            Medium        </td>
+        <td>Edit alert1 and save changes.</td>
+                <td>Changes should be saved successfully.</td>
+                    </tr>
+        <tr>
+        <td>
+            134        </td>
+        <td>
+            Medium        </td>
+        <td>Check email(account2) for the alert notification.</td>
+                <td>Notification should be received.</td>
+                    </tr>
+        <tr>
+        <td>
+            135        </td>
+        <td>
+            Medium        </td>
+        <td>Account3</td>
+                <td></td>
+                    </tr>
+        <tr>
+        <td>
+            136        </td>
+        <td>
+            Medium        </td>
+        <td>Open dashboard.</td>
+                <td>Shared env should be presented.</td>
+                    </tr>
+        <tr>
+        <td>
+            137        </td>
+        <td>
+            Medium        </td>
+        <td>Open env Settings -> Monitoring -> Load Alerts</td>
+                <td>Panel should be inactive. Caution with "Only an environment's admin or owner can perform this actions." is shown.</td>
+                    </tr>
+        <tr>
+        <td>
+            138        </td>
+        <td>
+            Medium        </td>
+        <td>Check email(account3) for the alert notification.</td>
+                <td>Should not be any notifications on email.</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Stage] - [Load Alerts]: Export -> Edit\Add alerts: Uncaught TypeError: Cannot read property 'get' of undefined</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-21075</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            139        </td>
+        <td>
+            High        </td>
+        <td>1. Create any env<br />
+2. Create any alert for node<br />
+3. Export your env<br />
+4. Refresh web-page<br />
+5. Try create new or edit your alerts</td>
+                <td>Creating or editing alerts w/o errors</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">Horizontal scaling (Network)</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;"></td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            140        </td>
+        <td>
+            High        </td>
+        <td>Open JCA -> Find you user -> Select "Quotas" -> Change quota "network.bandwidth.limitation" on "1000"</td>
+                <td>Changing quota w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            141        </td>
+        <td>
+            High        </td>
+        <td>Create evn with 1xTomcat7</td>
+                <td>Creating env w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            142        </td>
+        <td>
+            High        </td>
+        <td>Press "Settings" -> "Auto Horizontal Scaling" -> Select tab "Network"</td>
+                <td>Openings tab with settings for "Network" triggers</td>
+                    </tr>
+        <tr>
+        <td>
+            143        </td>
+        <td>
+            High        </td>
+        <td>Check default values</td>
+                <td>For "Add Nodes" - 85KB/s<br />
+For "Remove Nodes" - 17KB/s</td>
+                    </tr>
+        <tr>
+        <td>
+            144        </td>
+        <td>
+            High        </td>
+        <td>Set button "Turned" as "On"</td>
+                <td>Sections for settings the trigger displayed as active</td>
+                    </tr>
+        <tr>
+        <td>
+            145        </td>
+        <td>
+            High        </td>
+        <td>Check "Ext. traffic limit" on graphic</td>
+                <td>Limit is "7.3MB"</td>
+                    </tr>
+        <tr>
+        <td>
+            146        </td>
+        <td>
+            High        </td>
+        <td>Select duration "6 hours" -> Check "Ext. traffic limit"</td>
+                <td>The same result - "7.3MB"</td>
+                    </tr>
+        <tr>
+        <td>
+            147        </td>
+        <td>
+            High        </td>
+        <td>Repeat #145 for duration for: "12 hours", "1 day" and "1 week"</td>
+                <td>The same result - "7.3 MB"</td>
+                    </tr>
+        <tr>
+        <td>
+            148        </td>
+        <td>
+            High        </td>
+        <td>Enabled checkbox for "Add Nodes"</td>
+                <td>Section is activated</td>
+                    </tr>
+        <tr>
+        <td>
+            149        </td>
+        <td>
+            High        </td>
+        <td>Change value for "Whenever loading is more than" -> Manually set value "100"</td>
+                <td>Setting value "102KB/s"</td>
+                    </tr>
+        <tr>
+        <td>
+            150        </td>
+        <td>
+            High        </td>
+        <td>Change value for "Whenever loading is more than" -> Press on button with arrow down -> Check value</td>
+                <td>Setting value "85KB/s"</td>
+                    </tr>
+        <tr>
+        <td>
+            151        </td>
+        <td>
+            High        </td>
+        <td>Change value for "Whenever loading is more than" on maximum</td>
+                <td>Section "Add Nodes" is disabled</td>
+                    </tr>
+        <tr>
+        <td>
+            152        </td>
+        <td>
+            High        </td>
+        <td>Back value on "85KB/s" and activate section for "Add Nodes"</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            153        </td>
+        <td>
+            High        </td>
+        <td>Change value for "For at least" -> Try set "3" minutes</td>
+                <td>Value displayed as invalid</td>
+                    </tr>
+        <tr>
+        <td>
+            154        </td>
+        <td>
+            High        </td>
+        <td>Press "Apply" with "For at least" with value "3"</td>
+                <td>We get warning message "Some data isn't valid, please double-check your entries."</td>
+                    </tr>
+        <tr>
+        <td>
+            155        </td>
+        <td>
+            High        </td>
+        <td>Change value using button with arrow down</td>
+                <td>Setting "1 minutes"</td>
+                    </tr>
+        <tr>
+        <td>
+            156        </td>
+        <td>
+            High        </td>
+        <td>Press the button one more time for "For at least"</td>
+                <td>Missing any changes</td>
+                    </tr>
+        <tr>
+        <td>
+            157        </td>
+        <td>
+            High        </td>
+        <td>Try set "65 minutes"  for "For at least"</td>
+                <td>Values disabled as invalid</td>
+                    </tr>
+        <tr>
+        <td>
+            158        </td>
+        <td>
+            High        </td>
+        <td>Set value "55"  for "For at least"</td>
+                <td>Setting value w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            159        </td>
+        <td>
+            High        </td>
+        <td>Change value using button with arrow up</td>
+                <td>Setting "60 minutes"</td>
+                    </tr>
+        <tr>
+        <td>
+            160        </td>
+        <td>
+            High        </td>
+        <td>Press the button one more time for "For at least"</td>
+                <td>Missing any changes</td>
+                    </tr>
+        <tr>
+        <td>
+            161        </td>
+        <td>
+            High        </td>
+        <td>Enabled checkbox for "Remove Nodes"</td>
+                <td>Section is activated</td>
+                    </tr>
+        <tr>
+        <td>
+            162        </td>
+        <td>
+            High        </td>
+        <td>Open JCA -> Find your user -> "Quotas" -> Check quota "environment.maxsamenodescount"</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            163        </td>
+        <td>
+            High        </td>
+        <td>Try set for "Scale up to" more than quota limit</td>
+                <td>Values disabled as invalid</td>
+                    </tr>
+        <tr>
+        <td>
+            164        </td>
+        <td>
+            High        </td>
+        <td>Set for "Scale up to" value "1"</td>
+                <td>Values disabled as invalid</td>
+                    </tr>
+        <tr>
+        <td>
+            165        </td>
+        <td>
+            High        </td>
+        <td>Set for "Scale up to" value "2"</td>
+                <td>Setting value w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            166        </td>
+        <td>
+            High        </td>
+        <td>Try changes value using button with arrow down</td>
+                <td>Missing any changes</td>
+                    </tr>
+        <tr>
+        <td>
+            167        </td>
+        <td>
+            High        </td>
+        <td>Setting value with your quota limit minus one (eg. Quota limit is 16 - 1 = set 15)</td>
+                <td>Setting value w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            168        </td>
+        <td>
+            High        </td>
+        <td>Change value using button with arrow up</td>
+                <td>Setting your max limit samenodes w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            169        </td>
+        <td>
+            High        </td>
+        <td>Try changes value using button with arrow up</td>
+                <td>Missing any changes</td>
+                    </tr>
+        <tr>
+        <td>
+            170        </td>
+        <td>
+            High        </td>
+        <td>Try set value for "nodes by" as "0"</td>
+                <td>Value disabled as invalid</td>
+                    </tr>
+        <tr>
+        <td>
+            171        </td>
+        <td>
+            High        </td>
+        <td>Try set value for "nodes by" as "1"</td>
+                <td>Setting value w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            172        </td>
+        <td>
+            High        </td>
+        <td>Change value for "nodes by" using button with arrow down</td>
+                <td>Missing any changes</td>
+                    </tr>
+        <tr>
+        <td>
+            173        </td>
+        <td>
+            High        </td>
+        <td>Set value for "Sclae up to" as "5"</td>
+                <td>Setting value w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            174        </td>
+        <td>
+            High        </td>
+        <td>Try set value for "nodes by" as "6"</td>
+                <td>Value displayed as invalid</td>
+                    </tr>
+        <tr>
+        <td>
+            175        </td>
+        <td>
+            High        </td>
+        <td>Set value for "nodes by" as value for "Scale up to" minus 2 (eg. Value for "Scale up to" 5 - 2 = set 3)</td>
+                <td>Setting new value w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            176        </td>
+        <td>
+            High        </td>
+        <td>Change value for "nodes by" using button with arrow up</td>
+                <td>Changing value on +1 w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            177        </td>
+        <td>
+            High        </td>
+        <td>Change value for "nodes by" using button with arrow up one more time</td>
+                <td>Missing any changes</td>
+                    </tr>
+        <tr>
+        <td>
+            178        </td>
+        <td>
+            High        </td>
+        <td>Set values:<br />
+- Whenever loading is more than: 102KB/s<br />
+- Scale up to: 100</td>
+                <td>Setting changes w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            179        </td>
+        <td>
+            High        </td>
+        <td>Enable section "Remove nodes"</td>
+                <td>Section disabled as active</td>
+                    </tr>
+        <tr>
+        <td>
+            180        </td>
+        <td>
+            High        </td>
+        <td>Press on button with arrow down for "Whenever loading is less than"</td>
+                <td>Setting value "0KB/s" and disabled section "Remove nodes"</td>
+                    </tr>
+        <tr>
+        <td>
+            181        </td>
+        <td>
+            High        </td>
+        <td>Activate section -> Press on button with arrow up</td>
+                <td>Setting value "17KB/s"</td>
+                    </tr>
+        <tr>
+        <td>
+            182        </td>
+        <td>
+            High        </td>
+        <td>Change value "Whenever loading is less than" on "105KB/s"</td>
+                <td>Value displayed as invalid</td>
+                    </tr>
+        <tr>
+        <td>
+            183        </td>
+        <td>
+            High        </td>
+        <td>Press "Apply" with invalid value</td>
+                <td>Value changed on "102KB/s" and changes applyed w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            184        </td>
+        <td>
+            High        </td>
+        <td>Try change value for "Whenever loading is less than" using button with arrow up</td>
+                <td>Missing any changes</td>
+                    </tr>
+        <tr>
+        <td>
+            185        </td>
+        <td>
+            High        </td>
+        <td>Change value for "Scale down to" on "11"</td>
+                <td>Value displayed as incorrect</td>
+                    </tr>
+        <tr>
+        <td>
+            186        </td>
+        <td>
+            High        </td>
+        <td>Press "Apply" with incorrect value</td>
+                <td>Changing value on "9" and applying changes w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            187        </td>
+        <td>
+            High        </td>
+        <td>Change value for "Scale down to" using button with arow up</td>
+                <td>Missing any changes</td>
+                    </tr>
+        <tr>
+        <td>
+            188        </td>
+        <td>
+            High        </td>
+        <td>Change value for "Scale up to" for section "Add Nodes" using button with arrow down</td>
+                <td>Changing value for "Scale up to" on 9 and "Scale down to" on 8</td>
+                    </tr>
+        <tr>
+        <td>
+            189        </td>
+        <td>
+            High        </td>
+        <td>Change value for "Whenever loading is less than" in section "Remove nodes" on "68"</td>
+                <td>Changing value w.o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            190        </td>
+        <td>
+            High        </td>
+        <td>Change value for "Whenever loading is less than" for section "Add Nodes" on "17"</td>
+                <td>Setting the same value as for "Remove nodes" (can not set less than "Remove nodes" value)</td>
+                    </tr>
+        <tr>
+        <td>
+            191        </td>
+        <td>
+            High        </td>
+        <td>Set default values for sections:<br />
+For "Add nodes": <br />
+- Whenever loading is more than: 85<br />
+- For at least: 5<br />
+- Scale up to: 3 nodes by 1<br />
+For "Remove Nodes":<br />
+- Whenever loading is more than: 17<br />
+- For at least: 10<br />
+- Scale up to: 1 nodes by 1<br />
+<br />
+Apply changes</td>
+                <td>Changing and aplying settings w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            192        </td>
+        <td>
+            High        </td>
+        <td>Change "Turned" on "Off" -> Apply changes</td>
+                <td>Turned off trigger w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            193        </td>
+        <td>
+            High        </td>
+        <td>Close tab and open again</td>
+                <td>Openin tab with "Network" all triggers is disabled</td>
+                    </tr>
+        <tr>
+        <td>
+            194        </td>
+        <td>
+            High        </td>
+        <td>Change "Turned" on "On"</td>
+                <td>Sections displayed as active</td>
+                    </tr>
+        <tr>
+        <td>
+            195        </td>
+        <td>
+            High        </td>
+        <td>Enable section "Add Nodes"</td>
+                <td>Section is enabled</td>
+                    </tr>
+        <tr>
+        <td>
+            196        </td>
+        <td>
+            High        </td>
+        <td>Set settings:<br />
+For "Add Nodes":<br />
+- "Whenever loading is more than": 34 KB/s<br />
+- For at least: 1 minutes<br />
+- Scale up to: 4 nodes by 2<br />
+<br />
+Press "Apply"</td>
+                <td>Applyed changes w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            197        </td>
+        <td>
+            High        </td>
+        <td>Add to "Deployment manager" any external file (eg: Upload file to other platform -> Copy URL on file -> Add file to "Deployment manager")</td>
+                <td>Ok</td>
+                    </tr>
+        <tr>
+        <td>
+            198        </td>
+        <td>
+            High        </td>
+        <td>Deply file to env</td>
+                <td>Deploying file w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            199        </td>
+        <td>
+            High        </td>
+        <td>Wait ~1min</td>
+                <td>Should be running trigger on adding nodes</td>
+                    </tr>
+        <tr>
+        <td>
+            200        </td>
+        <td>
+            High        </td>
+        <td>Check env</td>
+                <td>Adding two new nodes w/o errors (in env should be 3 env)</td>
+                    </tr>
+        <tr>
+        <td>
+            201        </td>
+        <td>
+            High        </td>
+        <td>Open email -> Check letters about adding new node</td>
+                <td>Letter is present</td>
+                    </tr>
+        <tr>
+        <td>
+            202        </td>
+        <td>
+            High        </td>
+        <td>Press on "Events History" -> Select type "Horizontal scaling"</td>
+                <td>Opening logs for "Horizontal scaling" actions</td>
+                    </tr>
+        <tr>
+        <td>
+            203        </td>
+        <td>
+            High        </td>
+        <td>Check log information</td>
+                <td>Action: "Add Nodes"<br />
+Node Type: "Tomcat"<br />
+Condition: "NetExt > 34 KB/s"<br />
+Result: "SUCCESS"<br />
+<br />
+Details:<br />
+- Date: %date%<br />
+- Action: Add Nodes<br />
+- Node Type: Tomcat<br />
+- Condition: NextExt > 34 KB/s<br />
+- Loading Value: %loading% KB/s (Tomcat)<br />
+<br />
+Result:<br />
+- Status: SUCCESS<br />
+- Node Count: 3</td>
+                    </tr>
+        <tr>
+        <td>
+            204        </td>
+        <td>
+            High        </td>
+        <td>Open "Auto Horizontal Scaling" for "Network" -> Check grapgic</td>
+                <td>On graphic displayed loading info for Ext. Traffic</td>
+                    </tr>
+        <tr>
+        <td>
+            205        </td>
+        <td>
+            High        </td>
+        <td>Set new settings:<br />
+- Whenever loading is more than: 17KB/s<br />
+- For at least: 5 minutes<br />
+- Scale up to: 5 nodes by 4<br />
+<br />
+Apply changes</td>
+                <td>Applied changes w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            206        </td>
+        <td>
+            High        </td>
+        <td>Deploy file to env 3 times with interval ~1min</td>
+                <td>Deploying file w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            207        </td>
+        <td>
+            High        </td>
+        <td>Wait on running trigger</td>
+                <td>Trigger is runned</td>
+                    </tr>
+        <tr>
+        <td>
+            208        </td>
+        <td>
+            High        </td>
+        <td>Check env</td>
+                <td>Adding to env two new nodes (in env should be 5 nodes)</td>
+                    </tr>
+        <tr>
+        <td>
+            209        </td>
+        <td>
+            High        </td>
+        <td>Open email -> Check letters about adding new node</td>
+                <td>Letter is present</td>
+                    </tr>
+        <tr>
+        <td>
+            210        </td>
+        <td>
+            High        </td>
+        <td>Press on "Events History" -> Select type "Horizontal scaling"</td>
+                <td>Opening logs for "Horizontal scaling" actions</td>
+                    </tr>
+        <tr>
+        <td>
+            211        </td>
+        <td>
+            High        </td>
+        <td>Check log information for last action</td>
+                <td>Action: "Add Nodes"<br />
+Node Type: "Tomcat"<br />
+Condition: "NetExt > 17 KB/s"<br />
+Result: "SUCCESS"<br />
+<br />
+Details:<br />
+- Date: %date%<br />
+- Action: Add Nodes<br />
+- Node Type: Tomcat<br />
+- Condition: NextExt > 17KB/s<br />
+- Loading Value: %loading% KB/s (Tomcat)<br />
+<br />
+Result:<br />
+- Status: SUCCESS<br />
+- Node Count: 3</td>
+                    </tr>
+        <tr>
+        <td>
+            212        </td>
+        <td>
+            High        </td>
+        <td>Set settings:<br />
+For "Add Nodes": <br />
+- - "Whenever loading is more than": 85 KB/s<br />
+For "Remove Nodes":<br />
+- "Whenever loading is more than": 34 KB/s<br />
+- For at least: 1 minutes<br />
+- Scale down to: 4 nodes by 1<br />
+<br />
+Press "Apply"</td>
+                <td>Applyed changes w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            213        </td>
+        <td>
+            High        </td>
+        <td>Wait ~1 min and wait on running trigger</td>
+                <td>Running trigger w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            214        </td>
+        <td>
+            High        </td>
+        <td>Check env</td>
+                <td>Remove from env one node (in env should be 4 nodes)</td>
+                    </tr>
+        <tr>
+        <td>
+            215        </td>
+        <td>
+            High        </td>
+        <td>Open email -> Check letters about removing node</td>
+                <td>Letter is present</td>
+                    </tr>
+        <tr>
+        <td>
+            216        </td>
+        <td>
+            High        </td>
+        <td>Press on "Events History" -> Select type "Horizontal scaling"</td>
+                <td>Opening logs for "Horizontal scaling" actions</td>
+                    </tr>
+        <tr>
+        <td>
+            217        </td>
+        <td>
+            High        </td>
+        <td>Check log information for last action</td>
+                <td>Action: "Remove Nodes"<br />
+Node Type: "Tomcat"<br />
+Condition: "NetExt < 34 KB/s"<br />
+Result: "SUCCESS"<br />
+<br />
+Details:<br />
+- Date: %date%<br />
+- Action: Remove Nodes<br />
+- Node Type: Tomcat<br />
+- Condition: NextExt < 34KB/s<br />
+- Loading Value: %loading% KB/s (Tomcat)<br />
+<br />
+Result:<br />
+- Status: SUCCESS<br />
+- Node Count: 3</td>
+                    </tr>
+        <tr>
+        <td>
+            218        </td>
+        <td>
+            High        </td>
+        <td>Set settings:<br />
+For "Remove Nodes":<br />
+- "Whenever loading is more than": 17 KB/s<br />
+- For at least: 5 minutes<br />
+- Scale down to: 2 nodes by 4<br />
+<br />
+Press "Apply"</td>
+                <td>Applyed changes w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            219        </td>
+        <td>
+            High        </td>
+        <td>Wait ~5 min and wait on running trigger</td>
+                <td>Running trigger w/o problems</td>
+                    </tr>
+        <tr>
+        <td>
+            220        </td>
+        <td>
+            High        </td>
+        <td>Check env</td>
+                <td>Remove from env two nodes (in env should be 2 nodes)</td>
+                    </tr>
+        <tr>
+        <td>
+            221        </td>
+        <td>
+            High        </td>
+        <td>Open email -> Check letters about removing node</td>
+                <td>Letter is present</td>
+                    </tr>
+        <tr>
+        <td>
+            222        </td>
+        <td>
+            High        </td>
+        <td>Press on "Events History" -> Select type "Horizontal scaling"</td>
+                <td>Opening logs for "Horizontal scaling" actions</td>
+                    </tr>
+        <tr>
+        <td>
+            223        </td>
+        <td>
+            High        </td>
+        <td>Check log information for last action</td>
+                <td>Action: "Remove Nodes"<br />
+Node Type: "Tomcat"<br />
+Condition: "NetExt < 17 KB/s"<br />
+Result: "SUCCESS"<br />
+<br />
+Details:<br />
+- Date: %date%<br />
+- Action: Remove Nodes<br />
+- Node Type: Tomcat<br />
+- Condition: NextExt < 17KB/s<br />
+- Loading Value: %loading% KB/s (Tomcat)<br />
+<br />
+Result:<br />
+- Status: SUCCESS<br />
+- Node Count: 3</td>
+                    </tr>
+        <tr>
+        <td>
+            224        </td>
+        <td>
+            High        </td>
+        <td>Set settings:<br />
+For "Add Nodes":<br />
+- "Whenever loading is more than": 68 KB/s<br />
+- For at least: 5 minutes<br />
+- Scale down to: 3 nodes by 1<br />
+For "Remove Nodes":<br />
+- "Whenever loading is more than": 34 KB/s<br />
+- For at least: 15 minutes<br />
+- Scale down to: 1 nodes by 2<br />
+<br />
+<br />
+Press "Apply"</td>
+                <td>Applyed changes w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            225        </td>
+        <td>
+            High        </td>
+        <td>Deploy file to env 3 times with interval ~1min</td>
+                <td>Deploying file w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            226        </td>
+        <td>
+            High        </td>
+        <td>Wait on running script</td>
+                <td>Running trigger w/o problems</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[[Triggers for IO and traffic]: Tasks and JCA: in tasks should display information after applied changes in triggers]</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24264</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            227        </td>
+        <td>
+            High        </td>
+        <td>Create env:<br />
+env - with Tomcat7 node</td>
+                <td>Creating env w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            228        </td>
+        <td>
+            High        </td>
+        <td>Press "Settings" for env -> Select "Auto Horizontal Scaling" -> Enable turn on trigger for "CPU"</td>
+                <td>Section dislayed as active</td>
+                    </tr>
+        <tr>
+        <td>
+            229        </td>
+        <td>
+            High        </td>
+        <td>Enable trigger for "Add Nodes" -> Press "Apply"</td>
+                <td>Applying settings w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            230        </td>
+        <td>
+            High        </td>
+        <td>Check Tasks manager</td>
+                <td>We have two new tasks: "Adding trigger to %env_name%"</td>
+                    </tr>
+        <tr>
+        <td>
+            231        </td>
+        <td>
+            High        </td>
+        <td>Open JCA -> Select "Users" -> Find your user -> Open "Audit log" -> Check last actions</td>
+                <td>Displayed two new actions: "Adding CPU trigger to %env_name%"</td>
+                    </tr>
+        <tr>
+        <td>
+            232        </td>
+        <td>
+            High        </td>
+        <td>Move cursour on first action -> In displayed pop-up check parameters</td>
+                <td>Parameters:<br />
+{<br />
+"nodeName": "Tomcat",<br />
+"value": 80.0",<br />
+"env": "%env_name%",<br />
+"nodeGroup": "cp",<br />
+"period": "5",<br />
+"triggerType": "ADD_NODE",<br />
+"isEnabled": "true",<br />
+"resourceType": "CPU"<br />
+"count": "1",<br />
+"limit": "2"<br />
+}</td>
+                    </tr>
+        <tr>
+        <td>
+            233        </td>
+        <td>
+            High        </td>
+        <td>Move cursour on second action -> In displayed pop-up check parameters</td>
+                <td>Parameters:<br />
+{<br />
+"nodeName": "Tomcat",<br />
+"value": "10.0",<br />
+"env": "%env_name%",<br />
+"nodeGroup": "cp",<br />
+"period": "10",<br />
+"triggerType": "REMOVE_NODE",<br />
+"isEnabled": "false",<br />
+"resourceType": "CPU"<br />
+"count": "1",<br />
+"limit": "1"<br />
+}</td>
+                    </tr>
+        <tr>
+        <td>
+            234        </td>
+        <td>
+            High        </td>
+        <td>Open dashboard -> Change values for "Add Nodes" trigger:<br />
+- For "Whenever loading is more than" on 65%<br />
+- For at least "15" min<br />
+- Scale up to 4 nodes by 2<br />
+<br />
+Press "Apply"</td>
+                <td>Applying changes w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            235        </td>
+        <td>
+            High        </td>
+        <td>Check Tasks manager</td>
+                <td>We have two new tasks: "Editing trigger in %env_name%"</td>
+                    </tr>
+        <tr>
+        <td>
+            236        </td>
+        <td>
+            High        </td>
+        <td>Open JCA -> refresh "Audit log" tab -> Check last actions</td>
+                <td>Last actions are "Editing CPU trigger in %env_name%"</td>
+                    </tr>
+        <tr>
+        <td>
+            237        </td>
+        <td>
+            High        </td>
+        <td>Move cursour on first action -> In displayed pop-up check parameters</td>
+                <td>Parameters:<br />
+{<br />
+"nodeName": "Tomcat",<br />
+"value": 65.0",<br />
+"triggerId": "%trigger_id%",<br />
+"env": "%env_name%",<br />
+"nodeGroup": "cp",<br />
+"period": "15",<br />
+"triggerType": "ADD_NODE",<br />
+"isEnabled": "true",<br />
+"resourceType": "CPU"<br />
+"count": "2",<br />
+"limit": "4"<br />
+}</td>
+                    </tr>
+        <tr>
+        <td>
+            238        </td>
+        <td>
+            High        </td>
+        <td>Move cursour on second action -> In displayed pop-up check parameters</td>
+                <td>Parameters:<br />
+{<br />
+"nodeName": "Tomcat",<br />
+"value": "10.0",<br />
+"triggerId": "%trigger_id%",<br />
+"env": "%env_name%",<br />
+"nodeGroup": "cp",<br />
+"period": "10",<br />
+"triggerType": "REMOVE_NODE",<br />
+"isEnabled": "false",<br />
+"resourceType": "CPU"<br />
+"count": "1",<br />
+"limit": "1"<br />
+}</td>
+                    </tr>
+        <tr>
+        <td>
+            239        </td>
+        <td>
+            High        </td>
+        <td>Open dashboard -> Disable "Add Nodes" and enabled "Remove Nodes" triggers -> Press "Apply"</td>
+                <td>Applying changes w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            240        </td>
+        <td>
+            High        </td>
+        <td>Check Tasks manager</td>
+                <td>We have two new tasks: "Editing trigger in %env_name%"</td>
+                    </tr>
+        <tr>
+        <td>
+            241        </td>
+        <td>
+            High        </td>
+        <td>Open JCA -> refresh "Audit log" tab -> Check last actions</td>
+                <td>Last actions are "Editing CPU trigger in %env_name%"</td>
+                    </tr>
+        <tr>
+        <td>
+            242        </td>
+        <td>
+            High        </td>
+        <td>Move cursour on first action -> In displayed pop-up check parameters</td>
+                <td>Parameters:<br />
+{<br />
+"nodeName": "Tomcat",<br />
+"value": 65.0",<br />
+"triggerId": "%trigger_id%",<br />
+"env": "%env_name%",<br />
+"nodeGroup": "cp",<br />
+"period": "15",<br />
+"triggerType": "ADD_NODE",<br />
+"isEnabled": "false",<br />
+"resourceType": "CPU"<br />
+"count": "2",<br />
+"limit": "4"<br />
+}</td>
+                    </tr>
+        <tr>
+        <td>
+            243        </td>
+        <td>
+            High        </td>
+        <td>Move cursour on second action -> In displayed pop-up check parameters</td>
+                <td>Parameters:<br />
+{<br />
+"nodeName": "Tomcat",<br />
+"value": "10.0",<br />
+"triggerId": "%trigger_id%",<br />
+"env": "%env_name%",<br />
+"nodeGroup": "cp",<br />
+"period": "10",<br />
+"triggerType": "REMOVE_NODE",<br />
+"isEnabled": "true",<br />
+"resourceType": "CPU"<br />
+"count": "1",<br />
+"limit": "1"<br />
+}</td>
+                    </tr>
+        <tr>
+        <td>
+            244        </td>
+        <td>
+            High        </td>
+        <td>Open dashboard ->Change values for "Remove Nodes" trigger:<br />
+- For "Whenever loading is less than" on 25%<br />
+- For at least "1" min<br />
+- Scale down to 8 nodes by 5<br />
+<br />
+Press "Apply"</td>
+                <td>Applying changes w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            245        </td>
+        <td>
+            High        </td>
+        <td>Check Tasks manager</td>
+                <td>We have two new tasks: "Editing trigger in %env_name%"</td>
+                    </tr>
+        <tr>
+        <td>
+            246        </td>
+        <td>
+            High        </td>
+        <td>Open JCA -> refresh "Audit log" tab -> Check last actions</td>
+                <td>Last actions are "Editing CPU trigger in %env_name%"</td>
+                    </tr>
+        <tr>
+        <td>
+            247        </td>
+        <td>
+            High        </td>
+        <td>Move cursour on first action -> In displayed pop-up check parameters</td>
+                <td>Parameters:<br />
+{<br />
+"nodeName": "Tomcat",<br />
+"value": 65.0",<br />
+"triggerId": "%trigger_id%",<br />
+"env": "%env_name%",<br />
+"nodeGroup": "cp",<br />
+"period": "15",<br />
+"triggerType": "ADD_NODE",<br />
+"isEnabled": "false",<br />
+"resourceType": "CPU"<br />
+"count": "2",<br />
+"limit": "4"<br />
+}</td>
+                    </tr>
+        <tr>
+        <td>
+            248        </td>
+        <td>
+            High        </td>
+        <td>Move cursour on second action -> In displayed pop-up check parameters</td>
+                <td>Parameters:<br />
+{<br />
+"nodeName": "Tomcat",<br />
+"value": "25.0",<br />
+"triggerId": "%trigger_id%",<br />
+"env": "%env_name%",<br />
+"nodeGroup": "cp",<br />
+"period": "1",<br />
+"triggerType": "REMOVE_NODE",<br />
+"isEnabled": "true",<br />
+"resourceType": "CPU"<br />
+"count": "5",<br />
+"limit": "8"<br />
+}</td>
+                    </tr>
+        <tr>
+        <td>
+            249        </td>
+        <td>
+            High        </td>
+        <td>Open dashboard -> Disable triggers for "Remove Nodes"<br />
+Press "Apply"</td>
+                <td>Applying chnages w/o errors</td>
+                    </tr>
+        <tr>
+        <td>
+            250        </td>
+        <td>
+            High        </td>
+        <td>Check Tasks manager</td>
+                <td>We have two new tasks: "Editing trigger in %env_name%"</td>
+                    </tr>
+        <tr>
+        <td>
+            251        </td>
+        <td>
+            High        </td>
+        <td>Move cursour on first action -> In displayed pop-up check parameters</td>
+                <td>Parameters:<br />
+{<br />
+"nodeName": "Tomcat",<br />
+"value": 65.0",<br />
+"triggerId": "%trigger_id%",<br />
+"env": "%env_name%",<br />
+"nodeGroup": "cp",<br />
+"period": "15",<br />
+"triggerType": "ADD_NODE",<br />
+"isEnabled": "false",<br />
+"resourceType": "CPU"<br />
+"count": "2",<br />
+"limit": "4"<br />
+}</td>
+                    </tr>
+        <tr>
+        <td>
+            252        </td>
+        <td>
+            High        </td>
+        <td>Move cursour on second action -> In displayed pop-up check parameters</td>
+                <td>Parameters:<br />
+{<br />
+"nodeName": "Tomcat",<br />
+"value": "25.0",<br />
+"triggerId": "%trigger_id%",<br />
+"env": "%env_name%",<br />
+"nodeGroup": "cp",<br />
+"period": "1",<br />
+"triggerType": "REMOVE_NODE",<br />
+"isEnabled": "false",<br />
+"resourceType": "CPU"<br />
+"count": "5",<br />
+"limit": "8"<br />
+}</td>
+                    </tr>
+        <tr>
+        <td>
+            253        </td>
+        <td>
+            High        </td>
+        <td>Repeat steps #229 - 252 for other triggers types ("Memory", "Network", "Disk I/O", "Disk IOPS")</td>
+                <td>The same result</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Load alerts]: Values -> Should be rounding numbers for "Memory" and "Disk"</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24306</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            254        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with any node<br />
+2. Press "Settings" -> "Load alerts" <br />
+3. Add "Memory" or "Disk" trigger<br />
+4. Wait on running trigger<br />
+5. Check loading value in letter</td>
+                <td>Should be rounding numbers for "Memory" and "Disk"</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Changes in settings -> Deleting env: The "Settings" tab  is open</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24308</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            255        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with app server<br />
+2. Press "Settings" -> "Auto horizontal scaling" <br />
+3. Enable trigger for CPU -> MAke any changes<br />
+4. Delete env (tab and changes for triggers should not be closed)<br />
+5. In displayed pop-up ("Save changes?") press  "No"</td>
+                <td>Closing "Settings" tab if env is deleted</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Make changes in graphics and return to previous settings: Button "Apply" is active</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24228</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            256        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with any app server (eg Tomcat7) <br />
+2. Press "Settings" -> Select "Auto Horizontal Scaling"<br />
+3. Enabled trigger and enable sections "Add Nodes" and "Remove nodes"  -> Press "Apply"<br />
+4. Disable section "Add nodes" -> Enabled  section "Add Nodes"<br />
+5. Check buttons "Undo changes" and "Apply"</td>
+                <td>If we return to previous settings buttons should be disabled</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[[Triggers for IO and traffic]: Tasks and JCA]: JCA -> Parameters for actions: problems with displaying parameters after editing triggers</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24403</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            257        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with any app server<br />
+2. Press "Settings" <br />
+3. Enable CPU trigger -> Enable trigger for "Add Nodes" and "Remove nodes" -> Set value for "Add nodes" as "85%" -> Press "Apply" <br />
+4. Change value for "Add nodes" on 79% and enable trigger "Remove nodes" -> Press "Apply"<br />
+5. Open JCA -> Find your user -> Open "Audit log" -> Find last action with triggers<br />
+6. Check new parameters for actions  "Add Nodes" and "Remove Nodes"</td>
+                <td>1. Parameter "isEnabled" is present <br />
+2. In parameters displayed new value for trigger</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: link on documentation in letter\dashboard: incorrect link - redirecting on page "Multi nodes" instead of "Automatic Horizontal Scaling"</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24122</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            258        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard <br />
+2. Create env with any app server<br />
+3. Press "Settings" -> Select "Auto Horizontal Scaling" -> Press on link for opening documentation</td>
+                <td>Should be page with "Automatic Horizontal Scaling" - http://docs.jelastic.com/automatic-horizontal-scaling</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Quotas Pricing: icon for "RAM \ CPU" the same as for triggers for "Memory"</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24166</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            259        </td>
+        <td>
+            High        </td>
+        <td>1. Login to dashboard as billing user<br />
+2. Press "Balance" -> Select "Qutas&Pricing" -> Select "Disk space" tab and check icon for "RAM\CPU"</td>
+                <td>Icon is not changed</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: adding more nodes in one time: trigger is not running</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23942</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            260        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with any x1 app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Enabled scaling<br />
+5. Set value for: add node<br />
+- Whenever loading is more than: 0%<br />
+- For at least: 1m<br />
+- Scale up to: 32 nodes by 31 (as example. This case works and with setting: 20\19 and etc)<br />
+6. Press "Apply"<br />
+7. Wait on running triger</td>
+                <td>Adding to the env more nodes in one time w/o problems</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: problems with displying the values on graphics</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24063</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            261        </td>
+        <td>
+            High        </td>
+        <td>Case1: <br />
+1. Create env with any app server<br />
+2. Press "Settings" -> "horizontal scaling" -> enable trigger (eg CPU)<br />
+3. Set value for "Add nodes" -> "Whenever loading is more than": 80%<br />
+4.  Set value for "Add nodes" -> "Whenever loading is more than": 77%<br />
+5. Look as displayed the percents on lines<br />
+<br />
+Case2:<br />
+1. Create env with any app server<br />
+2. Press "Settings" -> "horizontal scaling" -> enable Network trigger <br />
+3. Set value for "Add nodes" -> "Whenever loading is more than": 1058<br />
+4. Look as displayed number on line near graphic</td>
+                <td>Case1: For "Add nodes" line the numbers should display above the line<br />
+For "Remove nodes" line the numbers should display below the line<br />
+<br />
+Case2: Text (values) should displayed correctly (w/o touching the line)</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic] NodeJS: problems with data for IO and IOPS</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24186</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            262        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with NodeJS<br />
+2. Press "Settings" -> "Auto horizontal scalling" -> Select "Disk IO" or "Disk IOPS"<br />
+3. Check datas</td>
+                <td>Datas should be valid w/o any errors</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Graphics: can't select horizontal period</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23969</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            263        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with 1x any app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Enable trigger for CPU<br />
+5. Try select horizontal period on graphics</td>
+                <td>Should be possibility for selecting horizontal period</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: refreshing statistics: incorrect displayed the graphics on the second tab</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23945</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            264        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create two new envs with any app server<br />
+3. Press "Settings" -> Horizontal scaling for env1 and env2<br />
+4. Enable triggers for two envs<br />
+5. Select settings for "env1" -> wait on refreshing statistics<br />
+6. Select settings for env2 - Check as displayed graphics</td>
+                <td>Info on the graphic should displayed w/o problems</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Size = 110%: incorrect displayed lines</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23926</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            265        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard in chrome <br />
+2. Create any env with app server<br />
+3. Change size for window on 110%<br />
+4. Open Settings -> Horizontal scaling<br />
+5. Check as displayed UI side</td>
+                <td>Lines should displayed w/o problems</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: "Network" tab -> remove node: incorrect the maximum value</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23944</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            266        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with 2x any app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Select "Network" tab -> Enable trigger<br />
+5. Set maximum value for "Add nodes" <br />
+6. Press "Apply"<br />
+7. Remove one node env<br />
+8. 4. Select "Network" tab -> Check maximum value for "Add Nodes"</td>
+                <td>Maximum value should be calculated correctly</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: values for "Whenever loading is...": can set incorrect values</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23937</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            267        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with any app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Enable scaling<br />
+5. Manually set for "Remove node" the percent - 20<br />
+6. Manually set for "Add node" the percent - 1<br />
+7. Press "Add"</td>
+                <td>For "Add" node we can't set value lower than "Remove node"</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Network: Trafic limit - On graphic can set more than limit</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24212</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            268        </td>
+        <td>
+            High        </td>
+        <td>1. Open JCA -> Find you user -> Select "Quotas" -> Change quota "network.bandwidth.limitation" on "1000"<br />
+2. Open dashboard -> Create env with Tomcat7<br />
+3. Press "Settings" -> "Auto Horizontal Scaling"<br />
+4. Select tab "Network"<br />
+5. Activate trigger -> Enable trigger for "Add Nodes" <br />
+6. Try set "Whenever loading is more than" more than limit</td>
+                <td>We can't set value more than limit</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Letters: Apache Python should be with part "Python"</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24126</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            269        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with Apache-Python<br />
+2. Press "Settings" -> Select "Auto Horizontal Scaling" -> Select "Mem" tab<br />
+3. Set trigger on adding node<br />
+4. Wait on adding node<br />
+5. Check letter about adding node</td>
+                <td>Apache-Python should have name with part "Python" and has a separate group of letters</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Events History: Types "Network\IOPS\Disk IO" displayed as "undefined"</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23967</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            270        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with 1x any app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Open "Disk I/O" tab -> Enable triggers<br />
+5. Set settings for "Add Node":<br />
+- Whenever loading is more than: 0%<br />
+- For at least: 1<br />
+- Scale up to: 2 by 1<br />
+6. Wait on adding node<br />
+7. Check log in the "Events history" -> Check type</td>
+                <td>Types should have valid names</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: incorrect work "For at least X minutes" for triggers: adding new nodes before the set time</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23966</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            271        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with app server<br />
+2. Press "Settings" -> Horizontal scaling" -><br />
+Set for sections "Add node":<br />
+- Whenever loading is more than: 0% <br />
+- For at least: the "5" minutes <br />
+- scale up to "2" by "1"<br />
+3. Press "Apply"<br />
+4. Refresh page after 1-2 minutes</td>
+                <td>Trigger should be run only after 5 minutes</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Adding\Removing nodes: action "Adding\Removing" nodes displayed only after refresh page</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23940</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            272        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with any app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Enabled scaling<br />
+5. Set value for: add node<br />
+- Whenever loading is more than: 0%<br />
+- For at least: 1m<br />
+- Scale up to: 3 nodes by 2<br />
+6. Press "Apply"<br />
+7. Wait on running triger</td>
+                <td>After running trigger on dashboard env should change status on "Change topology" or something esle</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: problems during selecting tab "Network": all time displayed "Save changes?"</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24069</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            273        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with any app server<br />
+2. Press "Settings" -> "Horizontal scaling" <br />
+3. Select "Network" tab<br />
+4. Select "MEM" tab -> Select "CPU" tab</td>
+                <td>Popup should not be displayed</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Network -> Default value: the value in tab "Remove node" displayed as the incorrect</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24050</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            274        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with any app.server<br />
+2. Press "Settings" -> "Horizontal scaling"<br />
+3. Select "Network" tab -> Check value in tab "Remove Nodes"</td>
+                <td>Default value should displayed as correct</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Graphics -> values for "Whenever loading is...": displayed incorrect values on graphics</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24034</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            275        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with any app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Enable scaling<br />
+5. Manually set for "Add node" the percent - 50<br />
+6. Manually set for "Remove node" the percent - 100<br />
+7. Check graphics</td>
+                <td>If we set value more the value in "Add node", the line should set the same as for "Remove node"</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: [Network]: "Events history" -> "Loading value" displayed in % instead of Kb/s</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24033</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            276        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with 1x any app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Open "Network" tab -> Enable triggers<br />
+5. Set settings for "Add Node":<br />
+- Whenever loading is more than: 0 KB/s<br />
+- For at least: 1<br />
+- Scale up to: 2 by 1<br />
+6. Wait on adding node<br />
+7. Check log in the "Events history" -> Select last event -> Check value in "Loading Value"</td>
+                <td>Value should be in Kb/s</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: "Events history" -> Values for "Network": instead of Kb/s displayed the percents</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23968</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            277        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with 1x any app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Open "Network" tab -> Enable triggers<br />
+5. Set settings for "Add Node":<br />
+- Whenever loading is more than: 0 KB/s<br />
+- For at least: 1<br />
+- Scale up to: 2 by 1<br />
+6. Wait on adding node<br />
+7. Check log in the "Events history" -> Check value in column "Condition"</td>
+                <td>as value for "Network" trigger should displayed KB/s</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Make changes in settings: Close tab -> Should be pop-up with message "Save changes?"</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23979</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            278        </td>
+        <td>
+            High        </td>
+        <td>1. Create any env with App server <br />
+2. Press "Settings" -> Horizontal scaling"<br />
+3. Enable any trigger and make any changes in settings<br />
+4. Close the tab</td>
+                <td>Should be displayed pop-up with message "Save changes?"</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: "Network" tab: non-activated checkboxes are activated after changing on graphics</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23943</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            279        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with any app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Open "Network" tab -> Enable triggers <br />
+5. Disable section "Remove nodes"<br />
+6. Change values for "Whenever loading is more than" <br />
+7. Check section "Remove nodes"</td>
+                <td>After making changes on "Add node" section, the section "Remove nodes" should not be enabled</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: environment.maxsamenodescount: changing "nodes by" - {"result":1204,"source":"JEL","error":"Invalid action params"}</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23977</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            280        </td>
+        <td>
+            High        </td>
+        <td>1. Open JCA -> select your user -> set quota "environment.maxsamenodescount": 2<br />
+2. Open dashboard <br />
+3. Create the any env with 1x app server<br />
+4. Press "Settings" -> Horizontal scaling -> Enable any trigger<br />
+5. Manually to change "Scale up to" on 5 (should be displayed as invalid value)<br />
+6. Now try change "nodes by" using adding button -> set "4"<br />
+7. Press "Apply"</td>
+                <td>we can't change "nodes by", after any action with "Scale up to"</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: graphics -> manualy change percent value: not displayed changes on the graphics</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23936</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            281        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard<br />
+2. Create new env with any app server<br />
+3. Press "Settings" -> Horizontal scaling<br />
+4. Enable trigger<br />
+5. Set for the "Add node" on graphics a value - 99%, and manually change value in line "Whenever loading is more than" on 50%<br />
+6. Check graphics</td>
+                <td>after manually changes, on the graphics should displayed new values</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Env with High-Availability: can set manually invalid values</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23978</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            282        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with HA<br />
+2. Open "Settings" -> Horizontal Scaling -> enable any trigger <br />
+3. Try to set manually the invalid settings (in example - for "Add node"):<br />
+- Scale up to: 7 nodes by 5<br />
+4. Press "Apply"</td>
+                <td>We can set values only multiples of 2</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: environment.maxnodescount: Events history: in log displayed "Success" but nodes can't be added</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23976</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            283        </td>
+        <td>
+            High        </td>
+        <td>1. Open JCA -> select your user -> set quota "environment.maxnodescount": 2<br />
+2. Open dashboard <br />
+3. Create any env with 1x app server<br />
+4. Press "Settings" -> Horizontal scaling -> Memory -> Enable trigger<br />
+5. Set settings for "Add node":<br />
+- Whenever loading is more than: 0<br />
+- For at least: 1m<br />
+- Scale up to: 3 nodes by: 1 <br />
+6. Presss "Apply" <br />
+7. Wait 1-2 min -> Open "Events History"<br />
+8. Check logs for Auto Horizontal Scaling</td>
+                <td>The action displayed result "failed" with info about quotas limit</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Events history: adding more nodes - Server returned HTTP response code: 504 for URL:</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24092</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            284        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with 1x app server<br />
+2. Press "Settings" -> "Horizontal scaling" <br />
+3. Enable "MEM" trigger -> Set settings for "Add nodes" -> Should add in one time more than 10 nodes<br />
+4. Wait on adding nodes <br />
+5. Press "Settings" -> "Events history" -> Check logs for "Horizontal scaling"</td>
+                <td>Should be "Success" result</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: manually change percent for "Disk I\O" or "Disk IOPS": problems with changing percent</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24128</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            285        </td>
+        <td>
+            High        </td>
+        <td>1. Open dashboard <br />
+2. Create env with any app server (In my case "Apache" php with 1 Reserver and 4 Scaled cloudlets) <br />
+3. Press "Settings" -> "Auto Horizontal Scaling" <br />
+4. Open tab "Disk I/O" or "Disk IOPS" <br />
+5. "Turned On" trigger -> Enable part "Remove node" -> Try set "11%" for "Whenever loading is less than" using adding button</td>
+                <td>Settings "11%" and changing cloudlets using the buttons w/o problems</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: environment w/o app. server: problems with pop-up with message "Save changes?"</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24109</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            286        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with only balance or mysql <br />
+2. Press "Settings" -> Select "Auto Horizontal Scaling"<br />
+3. Close tab</td>
+                <td>Missing pop-up message</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Loading graphics: changing tabs during loading graphics - problems with dsiplaying info</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24127</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            287        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with any app server<br />
+2. Press "Settings" -> "Auto Horizontal Scaling"<br />
+3. During loading graphic for "CPU" change the tab on "Network"<br />
+4. Check values for network</td>
+                <td>Values for network is "KB/s"</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Events history: incorrect message in logs - Execute trigger error: org.apache.velocity.exception.ParseErrorException: Lexical error, Encountered: "\"" (34), after : "\\" at *unset*[line 1, column 3319]</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24091</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            288        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with any app server <br />
+2. Press "Settings" -> "horizontal scaling"<br />
+3. Enable CPU trigger on addin 1 node<br />
+4. Wait on adding new node<br />
+5. Press "Settings" -> Events history -> Check logs for "Horizontal scalling"</td>
+                <td>Should be "Success" result</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Duration: set the "0" minutes - {"result":1204,"source":"JEL","error":"period: must be in interval between 1 and 60"}</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-23927</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            289        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with app server<br />
+2. Press "Settings" -> Horizontal scaling" -> set for any section "For at least:" the "0" minutes<br />
+3. Press "Apply"</td>
+                <td>Minimal value for "For at least" should be 1 minutes</td>
+                    </tr>
+            <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+                <td></td>
+                    </tr>
+            <tr>
+        <td colspan="4" style="background-color: #ced1d1;">[Triggers for IO and traffic]: Adding more nodes in one time: icorrect behaviour during adding a large number of nodes</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="background-color: #ced1d1;">http://jira.jelastic.com/browse/JE-24094</td>
+    </tr>
+    <tr>
+        <td>№</td>
+        <td>Priority</td>
+        <td>Check</td>
+                <td>Result</td>
+                    </tr>
+        <tr>
+        <td>
+            290        </td>
+        <td>
+            High        </td>
+        <td>1. Create env with 1x node<br />
+2. Press "Settings" -> "Horizontal scaling" <br />
+3. Enable "Mem" trigger -> Set settings on adding 20x nodes in one time<br />
+4. Wait on addin nodes<br />
+5. Check number of nodes in env</td>
+                <td>Should be 20 nodes in env</td>
+                    </tr>
+            </table>

@@ -1,0 +1,39 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "centos6-tomcat6.stage.jelastic.com"},
+    "env": {"topology": {
+      "engine": "java8",
+      "ha": false,
+      "nodes": [
+        {
+          "count": 1,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 6,
+          "nodeType": "tomcat6"
+        },
+        {
+          "count": 1,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 16,
+          "nodeType": "maven3"
+        }
+      ],
+      "ssl": false
+    }},
+    "name": 1439813741490,
+    "onInstall": {"call": {"procedure": "import"}},
+    "procedures": [{
+      "id": "import",
+      "onCall": [{"unpack": [{
+        "destPath": "/",
+        "nodeId": "${nodes.cp[0].id}",
+        "sourcePath": "https://node43862-centos6-tomcat6.stage.jelastic.com:7979/c588163c-ef97-4c2b-a4d4-194ed234cae0.tar.gz"
+      }]}]
+    }]
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.5"
+}

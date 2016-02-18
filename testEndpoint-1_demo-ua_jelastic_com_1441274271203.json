@@ -1,0 +1,37 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "testEndpoint-1.demo-ua.jelastic.com"},
+    "env": {"topology": {
+      "engine": "java6",
+      "ha": false,
+      "nodes": [{
+        "count": 2,
+        "extip": false,
+        "fixedCloudlets": 1,
+        "flexibleCloudlets": 16,
+        "nodeType": "mysql5-6"
+      }],
+      "ssl": false
+    }},
+    "name": 1441274271203,
+    "onInstall": {"call": {"procedure": "import"}},
+    "procedures": [{
+      "id": "import",
+      "onCall": [{"unpack": [
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.sqldb[0].id}",
+          "sourcePath": "https://node42117-testEndpoint-1.demo-ua.jelastic.com:7979/aa6038de-a872-4be9-a214-427c6cbf9b54.tar.gz"
+        },
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.sqldb[1].id}",
+          "sourcePath": "https://node42053-testEndpoint-1.demo-ua.jelastic.com:7979/aa6038de-a872-4be9-a214-427c6cbf9b54.tar.gz"
+        }
+      ]}]
+    }]
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.5"
+}

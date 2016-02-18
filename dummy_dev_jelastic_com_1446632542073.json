@@ -1,0 +1,22 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "dummy.dev.jelastic.com"},
+    "dockerImage": {},
+    "env": {"topology": {
+      "engine": "java6",
+      "ha": false,
+      "nodes": [{
+        "count": 1,
+        "extip": true,
+        "fixedCloudlets": 1,
+        "flexibleCloudlets": 8,
+        "nodeType": "centos7"
+      }],
+      "ssl": false
+    }},
+    "name": 1446632542073
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.5"
+}

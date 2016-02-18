@@ -1,0 +1,30 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "sdi-Apache.demo.jelastic.com"},
+    "env": {"topology": {
+      "engine": "php5.4",
+      "ha": false,
+      "nodes": [{
+        "count": 1,
+        "extip": false,
+        "fixedCloudlets": 1,
+        "flexibleCloudlets": 4,
+        "nodeType": "apache2"
+      }],
+      "ssl": false
+    }},
+    "name": 1448540703848,
+    "onInstall": {"call": {"procedure": "import"}},
+    "procedures": [{
+      "id": "import",
+      "onCall": [{"unpack": [{
+        "destPath": "/",
+        "nodeId": "${nodes.cp[0].id}",
+        "sourcePath": "https://node57572-sdi-Apache.demo.jelastic.com:7979/d0375cc5-7455-4741-a692-f07fca9ec017.tar.gz"
+      }]}]
+    }]
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.5"
+}

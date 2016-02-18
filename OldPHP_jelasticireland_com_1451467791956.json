@@ -1,0 +1,21 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "OldPHP.jelasticireland.com"},
+    "env": {"topology": {
+      "engine": "php5.4",
+      "ha": false,
+      "nodes": [{
+        "count": 1,
+        "extip": false,
+        "fixedCloudlets": 1,
+        "flexibleCloudlets": 4,
+        "nodeType": "apache2"
+      }],
+      "ssl": false
+    }},
+    "name": 1451467791956
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.3"
+}

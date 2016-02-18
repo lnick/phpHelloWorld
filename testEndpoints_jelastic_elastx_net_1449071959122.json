@@ -1,0 +1,58 @@
+{
+  "application": {
+    "categories": ["export"],
+    "description": {"text": "testEndpoints.jelastic.elastx.net"},
+    "env": {"topology": {
+      "engine": "php5.4",
+      "ha": false,
+      "nodes": [
+        {
+          "count": 1,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 8,
+          "nodeType": "mongodb"
+        },
+        {
+          "count": 1,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 6,
+          "nodeType": "mysql5"
+        },
+        {
+          "count": 1,
+          "extip": false,
+          "fixedCloudlets": 1,
+          "flexibleCloudlets": 4,
+          "nodeType": "apache2"
+        }
+      ],
+      "ssl": false
+    }},
+    "name": 1449071959122,
+    "onInstall": {"call": {"procedure": "import"}},
+    "procedures": [{
+      "id": "import",
+      "onCall": [{"unpack": [
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.cp[0].id}",
+          "sourcePath": "https://node50622-testEndpoints.jelastic.elastx.net:7979/dbac773d-ad32-40b4-803a-33324c9f6172.tar.gz"
+        },
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.sqldb[0].id}",
+          "sourcePath": "https://node50621-testEndpoints.jelastic.elastx.net:7979/dbac773d-ad32-40b4-803a-33324c9f6172.tar.gz"
+        },
+        {
+          "destPath": "/",
+          "nodeId": "${nodes.nosqldb[0].id}",
+          "sourcePath": "https://node50620-testEndpoints.jelastic.elastx.net:7979/dbac773d-ad32-40b4-803a-33324c9f6172.tar.gz"
+        }
+      ]}]
+    }]
+  },
+  "jpsType": "install",
+  "jpsVersion": "0.5"
+}
